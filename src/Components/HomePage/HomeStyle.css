@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+html{
+    font-size: 62.5%;
+}
+
+
+
+
+   /* Body Part ////////////////////////////////////////////*/
+
+
+   /* First image tag */
+   .Main-img{
+    display: flex;
+    justify-content: space-between;
+    border-radius: .5rem;
+    align-content: center;
+   
+    height: inherit;
+    width: 133rem;
+    height: 65rem;
+    /* background-color: rgb(0, 0, 0); */
+    /* padding: 0 20px; */
+    /* box-shadow: 0px 2px 5px #999; */
+
+   }
+
+   .main-image img {
+    border: .2rem solid black;
+    border-radius: 1rem;
+    /* margin-top: 14rem; */
+    margin:auto  1rem;
+    object-fit: cover;
+    /* margin-right: auto; */
+  }
+
+  /* Write on the top of an image */
+  .main-image::before {
+    content: "We Provide Solution For Agriculture Waste";
+    font-family: 'Assistant', sans-serif;
+    position: absolute;
+    color: rgb(0, 0, 0); /* or any color */
+    font-size: 7rem; /* or any font size */
+    top: 21.6rem; /* position from top of the image */
+    left: 90.8rem; /* position from left of the image */
+    width:42rem; /*this is to make it responsive*/
+  }
+
+
+  /* spaceee*/
+.space{
+    margin: 17rem;
+}
+.space1{
+    margin: 11rem;
+}
+
+
+/* service button css */
+.service{
+  display: flex;
+  justify-content: center;
+}
+  /* next text and image side by side content*/
+  /* Data Container */
+
+  .datacontainer{
+    /* overflow:scroll ; */
+    display: flex;
+    border: .2rem solid black;
+    width: 135rem;
+    background-color: rgb(235, 235, 220);
+    /* margin-top: 100px; */
+    padding: 5rem;
+  }
+
+  .text-container{
+    padding: 3rem;
+  }
+  
+  .image1{
+    height: 30rem;
+  }
+
+  .image2{
+    height: 30rem;
+  }
+  .image3{
+    height: 30rem;
+  }
+
+
+
+  /* Contact & about us page */
+  #contact{
+    background-color: rgb(165 128 0 / 10%);
+    padding: 20rem;
+  }
+
+  #about{
+    background-color: black;
+    color: white;
+    font-family: 'Assistant','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 20rem;
+  }
+
+
+
+  /* @media(min-width:1900px){
+    html{ 
+      font-size: 255%;
+
+    }
+  } */
+  @media(min-width:1600px){
+    html{ 
+      font-size: 75%;
+
+    }
+  }
+  @media(max-width:412px){
+    html{ 
+      font-size: 50%;
+
+    }
+  }
+  @media(max-width:350px){
+    html{ 
+      font-size: 45%;
+
+    }
+  }
+  @media(max-width:300px){
+    html{ 
+      font-size: 30%;
+
+    }
+  }
+  @media(max-width:200px){
+    html{ 
+      font-size: 20%;
+
+    }
+  }
+  @media(max-width:140px){
+    html{ 
+      font-size: 10%;
+
+    }
+  }
