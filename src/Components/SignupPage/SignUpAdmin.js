@@ -1,33 +1,33 @@
 import React, { useContext, useState } from 'react'
-import LoginCompany from '../LoginPage/LoginCompany' 
+import LoginAdmin from '../LoginPage/LoginAdmin' 
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Navbar from '../Navbar/Navbar';
+// import Navbar from '../Navbar/Navbar';
 import "./style1.css"
 import DeepContext from '../../context/DeepContext';
 
-const SignUpCompany = () => {
+const SignUpAdmin = () => {
   const {showAlert}=useContext(DeepContext);
 
   const navigate = useNavigate()
 
-  const [company, setCompany] = useState({
+  const [Admin, setAdmin] = useState({
     name: "", mobileno: "", email: "", password: "", cpassword: ""
   })
 
-  const Companysignup = async (e) => {
+  const Adminsignup = async (e) => {
     e.preventDefault();
-    if (company.password === company.cpassword) {
-      const data = await axios.post('http://localhost:5000/SignUpCompany', {
-        name: company.name,
-        mobileno: company.mobileno,
-        email: company.email,
-        password: company.password,
+    if (Admin.password === Admin.cpassword) {
+      const data = await axios.post('http://localhost:5000/SignUpAdmin', {
+        name: Admin.name,
+        mobileno: Admin.mobileno,
+        email: Admin.email,
+        password: Admin.password,
       })
       console.log(data.data);
       if (data.data.success) {
         showAlert(data.data.msg,'success');
-        navigate('/LoginCompany')
+        navigate('/LoginAdmin')
       } else {
         showAlert(data.data.msg,'danger');
       }
@@ -43,7 +43,7 @@ const SignUpCompany = () => {
   const handleInput = (e) => {
     name = e.target.name;
     value = e.target.value;
-    setCompany({ ...company, [name]: value })
+    setAdmin({ ...Admin, [name]: value })
     e.preventDefault();
   }
 
@@ -54,37 +54,37 @@ const SignUpCompany = () => {
       {/* </Navbar> */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <div className="center">
-        <h1>SignUp for Company
+        <h1>SignUp for Admin
         </h1>
-        <form onSubmit={Companysignup} method="post">
+        <form onSubmit={Adminsignup} method="post">
           <div className="txt_field">
-            <input type="text" required name='name' value={company.name} onChange={handleInput} />
+            <input type="text" required name='name' value={Admin.name} onChange={handleInput} />
 
             <label>Name</label>
           </div>
           <div className="txt_field">
-            <input type="text" required name='email' value={company.email} onChange={handleInput} />
+            <input type="text" required name='email' value={Admin.email} onChange={handleInput} />
 
             <label>Email</label>
           </div>
           <div className="txt_field">
-            <input type="text" required name='mobileno' value={company.mobileno} onChange={handleInput} />
+            <input type="text" required name='mobileno' value={Admin.mobileno} onChange={handleInput} />
 
             <label>Phone no.</label>
           </div>
           <div className="txt_field">
-            <input type="text" required name='password' value={company.password} onChange={handleInput} />
+            <input type="text" required name='password' value={Admin.password} onChange={handleInput} />
 
             <label>Password</label>
           </div>
           <div className="txt_field">
-            <input type="password" required name='cpassword' value={company.cpassword} onChange={handleInput} />
+            <input type="password" required name='cpassword' value={Admin.cpassword} onChange={handleInput} />
 
             <label>Confirm Password</label>
           </div>
           <input type="submit" value="Create account" className="Create"/>
           <div className="login_link">
-            already have account? <a href="LoginCompany">Login</a>
+            already have account? <a href="LoginAdmin">Login</a>
           </div>
         </form>
       </div>
@@ -92,4 +92,4 @@ const SignUpCompany = () => {
   )
 }
 
-export default SignUpCompany
+export default SignUpAdmin

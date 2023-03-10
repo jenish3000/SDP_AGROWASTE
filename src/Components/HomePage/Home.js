@@ -8,7 +8,7 @@ import './HomeStyle.css'
 const Home = () => {
     return (
         <>
-            <Navbar/>
+            {/* <Navbar/> */}
             <div className='main'>
                 <div className="bodymain">
                     

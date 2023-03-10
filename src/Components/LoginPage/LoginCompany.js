@@ -9,17 +9,18 @@ const LoginCompany = () => {
 
   const navigate = useNavigate()
 
-  const [user,setuser] = useState({
+  const [Company,setCompany] = useState({
     email:"", password:""
   })
   
-  const userlogin = async (e) => {
+  const Companylogin = async (e) => {
     e.preventDefault();
-    const data = await axios.post('/login', {
-      email: user.email,
-      password: user.password
+    const data = await axios.post('http://localhost:5000/LoginCompany', {
+      email: Company.email,
+      password: Company.password
     })
-    if(data.data.user){
+    console.log("inside company   ,"+data);
+    if(data.data){
       alert(data.data.message);
       navigate('/')
     }else{
@@ -31,29 +32,29 @@ const LoginCompany = () => {
   const handleInput = (e) => {
     name = e.target.name;
     value = e.target.value;
-    setuser({...user, [name]:value})
+    setCompany({...Company, [name]:value})
     e.preventDefault();
   }
 
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
       <div className="center">
       <h1>Login For Company</h1>
-      <form method="post">
+      <form onSubmit={Companylogin} method="post">
         <div className="txt_field">  
 
-          <input type="text" required name='email' value={user.email} onChange={handleInput}/>
-          <label>Username</label>
+          <input type="text" required name='email' value={Company.email} onChange={handleInput}/>
+          <label>Companyname</label>
         </div>
         <div className="txt_field"> 
 
-          <input type="password" required name='password' value={user.password} onChange={handleInput}/>
+          <input type="password" required name='password' value={Company.password} onChange={handleInput}/>
           <label>Password</label>
         </div>
         <div className="pass"><a href="Forget" >Forget Password?</a></div>
 
-             <input type="submit" value="Login" className="Login" onClick={userlogin}/>
+             <input type="submit" value="Login" className="Login" />
         <div className="signup_link">
           Not a member? <a href="SignUpCompany" >Signup</a>
         </div>

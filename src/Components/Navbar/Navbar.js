@@ -1,9 +1,17 @@
 import React from 'react';
 import './Navbar.css';
-import Home from '../HomePage/Home';
+// import Home from '../HomePage/Home';
 import OptionSignup from '../OptionPage/OptionSignup';
 import OptionLogin from '../OptionPage/OptionLogin';
+import {useNavigate} from 'react-router-dom';
 function Navbar() {
+    const navigate=useNavigate();
+    const handleSignup=()=>{
+        navigate('OptionSignup');
+    }
+    const handleLogin=()=>{
+        navigate('OptionLogin');
+    }
   return (
     <>
 <div className="navbar-container">
@@ -30,11 +38,11 @@ function Navbar() {
                         </div>
                         <div className="signin btn" id="log-btn">
 
-                            <button role="button" className="button-name">
-                                <a href="/OptionSignup" className="call">REGISTER</a> </button>
+                            <button role="button" className="button-name" onClick={handleSignup}>
+                                REGISTER</button>
                         </div>
-                            <button role="button" className="button-name">
-                                <a href="/OptionLogin" className="call">SIGN IN</a> </button>
+                            <button role="button" className="button-name" onClick={handleLogin}>
+                                SIGN IN</button>
                         </div>
                     </div>
                 

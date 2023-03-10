@@ -53,8 +53,8 @@ const Service = () => {
 
   return (
     <>    
-      <Navbar style="background-color:#1a4664;">
-      </Navbar>
+      {/* <Navbar>
+      </Navbar> */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 <div className="center">
       <h1>Details</h1>
@@ -80,20 +80,20 @@ const Service = () => {
           <label>Which crops are planted in your field?</label>
         </div>
         
-        <div style="margin: 20px auto;">
+        <div style={{margin: "20px auto"}}>
           <label for="Date">When did you plant that crop?</label>
 <input type="date" id="Date" name="Date" value={service.date} onChange={handleInput}/>
         </div>
-        <div style="margin: 20px auto;">
+        <div style={{margin: "20px auto"}}>
           <label for="Date">Approx duration of harvesting.</label>
 <input type="date" id="Date" name="du1" value={service.du1} onChange={handleInput}/>
 <label>To</label>
 <input type="date" id="Date" name="du2" value={service.du2} onChange={handleInput}/>
         </div>
        
-        <div style="margin : 20px auto">
+        <div style={{margin : "20px auto"}}>
           <fieldset>
-            <legend style="text-align: center;">What do you want to give ? </legend>
+            <legend style={{textAlign:"center"}}>What do you want to give ? </legend>
             <label className="lab">
               <input type="radio" name="type"  value={service.type} onChange={handleInput}/>
               Only Residues
@@ -105,7 +105,7 @@ const Service = () => {
           </fieldset>
           
         </div>                
-        <div style="margin: 20px auto;">
+        <div style={{margin: "20px auto"}}>
           <label for="faq">Select Machine you need for harvesting</label>
           <select id="faq" name="mtype" value={service.mtype} onChange={handleInput}>
             <option value="answer1">Harvester</option>
@@ -114,7 +114,7 @@ const Service = () => {
             <option value="answer3">Machine4</option>
           </select>
         </div>
-        <div style="margin: auto;" className="cen">
+        <div style={{margin: "auto"}} className="cen">
          <input type="submit" value="a1" />
         </div>
         

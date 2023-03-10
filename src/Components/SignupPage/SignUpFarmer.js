@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext,useState } from 'react'
 import LoginFarmer from '../LoginPage/LoginFarmer'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar';
 import "./style1.css"
-
+import DeepContext from '../../context/DeepContext';
 const SignUpFarmer = () => {
-
+  const {showAlert}=useContext(DeepContext);
 
   const navigate = useNavigate()
 
@@ -17,18 +17,18 @@ const SignUpFarmer = () => {
   const usersignup = async (e) => {
     e.preventDefault();
     if (user.password === user.cpassword) {
-      const data = await axios.post('/signup', {
+      const data = await axios.post('http://localhost:5000/SignUpFarmer', {
         name: user.name,
         mobileno: user.mobileno,
         email: user.email,
         password: user.password,
       })
-
+      console.log(data.data);
       if (data.status === 200) {
-        alert(data.data.message);
+        showAlert(data.data.message,'success');
         navigate('/LoginFarmer')
       } else {
-        alert(data.data.message);
+        showAlert(data.data.message,'danger');
       }
     }
     else{
@@ -49,8 +49,8 @@ const SignUpFarmer = () => {
 
   return (
     <>
-      <Navbar style="background-color:#1a4664;">
-      </Navbar>
+      {/* <Navbar style="background-color:#1a4664;"> */}
+      {/* </Navbar> */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <div className="center">
         <h1>SignUp for Farmer</h1>

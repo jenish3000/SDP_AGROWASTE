@@ -15,12 +15,14 @@ const LoginFarmer = () => {
   
   const userlogin = async (e) => {
     e.preventDefault();
-    const data = await axios.post('/login', {
+    const data = await axios.post('http://localhost:5000/LoginFarmer', {
       email: user.email,
       password: user.password
     })
-    if(data.data.user){
+    console.log(data);
+    if(data.data){
       alert(data.data.message);
+      
       navigate('/')
     }else{
       alert(data.data.message);
@@ -37,10 +39,10 @@ const LoginFarmer = () => {
 
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
       <div className="center">
       <h1>Login for Farmer</h1>
-      <form method="post">
+      <form onSubmit={userlogin} method="post">
         <div className="txt_field">  
 
           <input type="text" required name='email' value={user.email} onChange={handleInput}/>
@@ -53,7 +55,7 @@ const LoginFarmer = () => {
         </div>
         <div className="pass"><a href="Forget" >Forget Password?</a></div>
 
-             <input type="submit" value="Login" className="Login" onClick={userlogin}/>
+             <input type="submit" value="Login" className="Login" />
         <div className="signup_link">
           Not a member? <a href="SignUpFarmer" >Signup</a>
         </div>
