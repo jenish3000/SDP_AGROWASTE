@@ -61,3 +61,30 @@ app.use('/',router);
 
 const PORT =  5000;
 app.listen(PORT,()=>console.log('server started on port 5000'));
+
+const server = require('http').createServer();
+const io = require('socket.io')(server,{
+    cors :{
+        origin : "*",
+        methods : ["GET","POST"],
+        allowedHeaders : ["my-custom-header"],
+        credentials : true
+    }
+});
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+
+  socket.on('bid', (data) => {
+    console.log(data);
+    io.emit('bid', data);
+  });
+});
+
+server.listen(3001, () => {
+  console.log('listening on *:3001');
+});

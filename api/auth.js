@@ -300,7 +300,7 @@ router.post('/Service', async (req, res) => {
         const EmailExist = await service.findOne({ email: req.body.email });
         if (EmailExist) return res.status(200).send("Already Requested!!!");
         else{
-            const newSer = new service({
+            const newSer = await service.create({
                 email:req.body.email,
                 mobileno:req.body.mobileno,
                 acre: req.body.acre,
@@ -314,15 +314,15 @@ router.post('/Service', async (req, res) => {
             });
             console.log("Printed",newSer);
             if(newSer){
-                res.json({success:true,msg:"successfully created company."})
+                res.json({success:true,msg:"successfully requested for harvesting."})
             }
             else{
-                res.status(401).json({success:false,msg:"company is not created."})
+                res.status(401).json({success:false,msg:"Request is not accepted."})
             }
-            newCom.save().then((result) => {
-                console.log("Saved");
-                res.redirect('/');
-            }).catch(err => res.status(300).send(err));
+            // newCom.save().then((result) => {
+            //     console.log("Saved");
+            //     res.redirect('/');
+            // }).catch(err => res.status(300).send(err));
         }
     } catch(err){
         console.error(err.message)
