@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./style.css"
 import SignUpCompany from '../SignupPage/SignUpCompany'
 import Forget from './Forget'
 import Navbar from '../Navbar/Navbar'; 
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import DeepContext from '../../context/DeepContext';
 const LoginCompany = () => {
-
+  const {showAlert}=useContext(DeepContext);
   const navigate = useNavigate()
 
   const [Company,setCompany] = useState({
@@ -21,10 +22,10 @@ const LoginCompany = () => {
     })
     console.log("inside company   ,"+data);
     if(data.data){
-      alert(data.data.message);
+      showAlert(data.data.message,'success');
       navigate('/')
     }else{
-      alert(data.data.message);
+      showAlert(data.data.message,'danger');
     }
   }
 

@@ -1,3 +1,4 @@
+import './App.css';
 // import './App.css';
 // import Login from './Components/LoginPage/Login';
 // import Index from './Components/Index2';

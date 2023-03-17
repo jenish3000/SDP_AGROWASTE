@@ -10,6 +10,19 @@ html{
 
    /* Body Part ////////////////////////////////////////////*/
 
+   /* Carousel images */
+  .carousel{
+    display: flex;
+    justify-content: space-between;
+    border-radius: .5rem;
+    align-content: center;
+   
+    height: inherit;
+    width: 133rem;
+    height: 65rem;
+    margin:2rem  1rem;
+    object-fit: cover;
+  }
 
    /* First image tag */
    .Main-img{
@@ -78,7 +91,11 @@ html{
 
   .text-container{
     padding: 3rem;
+    font-size: 1.5rem;
   }
+  /* .text-Contant{
+    font-size: 16rem;
+  } */
   
   .image1{
     height: 30rem;

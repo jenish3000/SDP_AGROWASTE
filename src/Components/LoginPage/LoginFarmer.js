@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext,useState } from 'react'
 import "./style.css"
 import SignUpFarmer from '../SignupPage/SignUpFarmer'
 import Forget from './Forget'
 import Navbar from '../Navbar/Navbar'; 
+// import Home from '../HomePage/Home'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import DeepContext from '../../context/DeepContext';
 const LoginFarmer = () => {
-
+  const {showAlert}=useContext(DeepContext);
   const navigate = useNavigate()
 
   const [user,setuser] = useState({
@@ -21,11 +23,11 @@ const LoginFarmer = () => {
     })
     console.log(data);
     if(data.data){
-      alert(data.data.message);
+      showAlert(data.data.message,'success');
       
       navigate('/')
     }else{
-      alert(data.data.message);
+      showAlert(data.data.message,'danger');
     }
   }
 

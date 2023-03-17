@@ -6,6 +6,8 @@ import LoginAdmin from './LoginPage/LoginAdmin';
 import SignUpFarmer from './SignupPage/SignUpFarmer';
 import SignUpCompany from './SignupPage/SignUpCompany';
 import SignUpAdmin from './SignupPage/SignUpAdmin';
+import Auction from './Auction/Auction';
+import AuctionList from './Auction/AuctionList';
 import Home from './HomePage/Home';
 import Forget from './LoginPage/Forget';
 import Service from './ServicePage/Service';
@@ -31,6 +33,8 @@ const Index2 = () => {
         <Route path='/SignUpFarmer' element={<SignUpFarmer/>}/>
         <Route path='/SignUpCompany' element={<SignUpCompany/>}/>
         <Route path='/SignUpAdmin' element={<SignUpAdmin/>}/>
+        <Route path='/Auction' element={<Auction/>}/>
+        <Route path='/AuctionList' element={<AuctionList/>}/>
         <Route path='/Forget' element={<Forget/>}/>
         <Route path='/Service' element={<Service/>}/>
        </Routes>

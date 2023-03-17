@@ -55,7 +55,8 @@ const Service = () => {
     <>    
       {/* <Navbar>
       </Navbar> */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      {/* <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta> */}
+      {/* <div className="space"></div> */}
 <div className="center">
       <h1>Details</h1>
       <form onSubmit={Servicefun} method="POST" id="myForm">
@@ -114,12 +115,13 @@ const Service = () => {
             <option value="answer3">Machine4</option>
           </select>
         </div>
-        <div style={{margin: "auto"}} className="cen">
-         <input type="submit" value="a1" />
+        <div  className="cen">
+         <input type="submit" value="Request" />
         </div>
-        
       </form>
+      {/* <div className="space"></div> */}
     </div>
+    <div className="space"></div>
     </>
   )
 }
