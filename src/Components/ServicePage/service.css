@@ -8,13 +8,17 @@
 
 .center{
   position: absolute;
-  top: 40rem;
+  top:53rem;
+  width: 50rem;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  /* width: 40rem; */
   background: white;
   border-radius: 20px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+}
+.JB{
+ 
 }
 .center h1{
   text-align: center;
@@ -31,6 +35,13 @@ form .txt_field{
   position: relative;
   border-bottom: 2px solid hsl(0, 0%, 68%);
   margin: 30px 0;
+}
+
+
+/* height and width of the service form  */
+.form-control{
+  height:3.5rem;
+  /* width:22rem; */
 }
 .txt_field input{
   width: 100%;
@@ -205,3 +216,148 @@ input[type="submit"]:hover{
   box-shadow: none;
   transform: translateY(0);
  }
+
+
+
+ /* checkbox css */
+ .radio-inputs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  background-color: #EEE;
+  box-sizing: border-box;
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+  padding: 0.25rem;
+  width: 300px;
+  font-size: 14px;
+}
+
+.radio-inputs .radio {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.radio-inputs .radio input {
+  display: none;
+}
+
+.radio-inputs .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  padding: .5rem 0;
+  color: rgba(51, 65, 85, 1);
+  transition: all .15s ease-in-out;
+}
+
+.radio-inputs .radio input:checked + .name {
+  background-color: #fff;
+  font-weight: 600;
+}
+
+
+.jb{
+  font-size: 1.6rem;
+}
+.jb1{
+  flex-wrap: nowrap;
+  width: 33rem;
+}
+
+
+/* for select  */
+/* Base styles for the select wrapper */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+/* Base styles for the select element */
+.select-wrapper select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid #ddd;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* Styles for the select arrow */
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  /* top: 50%;
+  right: 10px; */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #555;
+}
+
+/* Styles for the select when it's open */
+.select-wrapper select:focus {
+  border-color: #aaa;
+}
+
+/* Styles for the select when an option is hovered */
+.conta{
+  display: block;
+  height: 1.5em;
+  width: 1.5em;
+  cursor: pointer;
+  position: relative;
+}
+
+.conta input {
+  position: absolute;
+  transform: scale(0);
+}
+
+.conta input:checked ~ .checkmark {
+  transform: rotate(45deg);
+  height: 2em;
+  width: .7em;
+  border-color: #32cd32;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-radius: 0;
+}
+
+.conta .checkmark {
+  display: block;
+  width: inherit;
+  height: inherit;
+  border: 2px solid #32cd32;
+  border-radius: 4px;
+  transition: all .3s;
+}
+
+
+
+.jb2{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding: .1rem 1rem;
+}
+
+.jb3{
+  font-size: 1.4rem;
+  font-family:Arial, Helvetica, sans-serif;
+  padding: 1px 1rem; 
+}

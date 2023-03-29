@@ -77,24 +77,104 @@
 // export default Auction;
 
 
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import AuctionList from './AuctionList';
+import {nanoid} from 'nanoid';
+import DeepContext from '../../context/DeepContext';
 
 const socket = io('http://localhost:3001');
 
-function Auction({ username }) {
+function Auction(props) {
+  // const {user} = props;
+  // console.log("heorweoroew ", props);
+  // localStorage.setItem('username',username);
+  const [price, setprice] = useState(0);
   const [amount, setAmount] = useState('');
-
+  const [Code,setCode] = useState('');
+  const [bids,setbids] = useState([]);
+  const [h,setH] = useState([]);
+  const [Start,setStart] = useState(0);
+  const {user,setUser}=useContext(DeepContext);
+  const [Hig,setHig] = useState(0);
   const handleSubmit = (event) => {
     event.preventDefault();
-    socket.emit('bid', { username, amount });
+    // setUser("qq");
+    console.log("hii i am msg",user);
+    // console.log(price,amount);
+    if(Hig < amount){ 
+      setprice(amount);
+      // console.log(price);
+      socket.emit('send_bid', { bid : amount,Code,user});
+      socket.on("error_bid",(data)=>{
+        console.log("Hello from inside");
+        alert("Invalid bid for User");
+      })
+    }
+    else{
+      alert("Please Enter valid bid");
+    }
     setAmount('');
   };
 
+  const SubmitCode = (event) => {
+    event.preventDefault();
+    socket.emit('join room',{Code : Code});
+    socket.on("room_error",(data)=>{
+      alert("can not find room with this id");
+    })
+    socket.on("starting_bid",(data)=>{
+      console.log("data is here",data);
+      setStart(data);
+    })
+    socket.on("curr_bid",(data)=>{
+      setHig(data);
+    })
+    socket.on("bids",(data)=>{
+      console.log("kya mast mossam hai",[...data]);
+      setbids((bids)=>{
+        if(bids&&!bids.includes(data)){
+          setbids([...bids,...data]);
+        }
+      })
+        
+    })
+    
+  }
+  useEffect(() => {
+    socket.on("receive_bid",(data)=>{
+      console.log(data);
+      setH((h)=>[...h,data]);
+      console.log(h);
+      setbids((bids)=>{
+        if(bids&&!bids.includes(data)){
+          setbids([...bids,data]);
+        }
+      })
+    
+
+      socket.on("curr_bid",(data)=>{
+        setHig(data);
+      })
+
+    });
+    console.log(user);
+    
+  }, [socket])
+  
   return (
     <>
-    <AuctionList/>
+    <form onSubmit={SubmitCode}>
+    <input
+        type="number"
+        value={Code}
+        onChange={(event) => setCode(event.target.value)}
+      />
+      <button type="submit">Submit</button> 
+    </form>
+    <p>---------------</p>
+    <p>Starting Bid is : {Start} || Current Highest Bid : {Hig}</p>
+    <AuctionList bids = {bids}/>
     <form onSubmit={handleSubmit}>
       <input
         type="number"
@@ -107,4 +187,4 @@ function Auction({ username }) {
   );
 }
 
-export default Auction;
+export default Auction;

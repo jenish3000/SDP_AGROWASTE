@@ -1,29 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
+import React, { useEffect, useState } from 'react';
+// const socket = io('http://localhost:3001');
 
-const socket = io('http://localhost:3001');
+function AuctionList(props) {
 
-function AuctionList() {
-  const [bids, setBids] = useState([]);
+  const [newArr , setnewArr] = useState([]);
+  const {bids} = props;
+  // bids.reverse();
+    useEffect(()=>{
+      // const x  = bids;
+      // x.reverse();
+      // setnewArr([...x.slice(0,3)])
+      let x = bids;
+      console.log("new bids " ,x.reverse());
+    },[]);
+  // const [bids, setBids] = useState([]);
 
-  useEffect(() => {
-    socket.on('bid', (data) => {
-      setBids((bids) => [...bids, data]);
-    });
-    
-    return () => {
-        socket.off('bid');
-      };
-  }, []);
+  // useEffect(() => {
+  //   socket.on('recieve_bid', (data) => {
+  //     console.log("hello this is bids from auctionlist " ,data);
+  //     setBids((bids) => [...bids, data]);
+  //   });
+  //   console.log("Hello from inside llist")
+  //   return () => {
+  //       socket.off('bid');
+  //     };
+  // }, [socket]);
 
   return (
     <div>
       <h2>Bids:</h2>
       <ul>
-        {bids.map((bid) => (
-          <li style = {{listStyle:"none"}}key={bid.id}>
-            {bid.username} bid {bid.amount}
-          </li>
+        {bids.map((bid,idx) => (
+          <>{1&&
+          <li style = {{listStyle:"none"}}key={idx}>
+            {bid.Bid} bid 
+            {/* {bid.id} ==== {bid.User} */}
+          </li>}
+          </>
         ))}
       </ul>
     </div>
