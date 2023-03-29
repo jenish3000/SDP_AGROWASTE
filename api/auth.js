@@ -254,6 +254,7 @@ router.post("/LoginFarmer", async (req, res) => {
   });
 router.post("/LoginCompany", async (req, res) => {
     const { email, password } = req.body;
+    console.log(req.body);
     const company = await Company.findOne({ email:email  });
     if (company) {
       if (await bcrypt.compare(password, company.password)) {
@@ -265,10 +266,12 @@ router.post("/LoginCompany", async (req, res) => {
         //   cookie: token,
           type: "Company",
           message: `Hello ${company.name}, You Logged in successfully!`,
+          success:true,
+          name:Company.name 
         });
   
       } else
-        res.status(201).send({ message: "Error! : *** Invalid Password ***" });
+        res.status(201).send({ message: "Error! : *** Invalid Password ***"});
     } else {
       res.status(202).send({ message: "Error! : *** userNotfound ***" });
     }

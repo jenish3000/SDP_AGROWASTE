@@ -4,10 +4,11 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const router =require('./api/auth');
 // const connect= require('./config/db');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // const router = require('./api/auth');
 // var path = require('path')
-
+// const cors=require('cors');
+const AuctionServer=require('./AuctionServer');
 const app = express();
 
 connectDB();
@@ -62,29 +63,28 @@ app.use('/',router);
 const PORT =  5000;
 app.listen(PORT,()=>console.log('server started on port 5000'));
 
-const server = require('http').createServer();
-const io = require('socket.io')(server,{
-    cors :{
-        origin : "*",
-        methods : ["GET","POST"],
-        allowedHeaders : ["my-custom-header"],
-        credentials : true
-    }
-});
+// const server = require('http').createServer();
+// const io = require('socket.io')(server,{
+//     cors :{
+//         origin : "*",
+//         methods : ["GET","POST"],
+//         allowedHeaders : ["my-custom-header"],
+//         credentials : true
+//     }
+// });
 
-io.on('connection', (socket) => {
-  console.log('a user connected');
+// io.on('connection', (socket) => {
+//   console.log('a user connected');
 
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
+//   socket.on('disconnect', () => {
+//     console.log('user disconnected');
+//   });
 
-  socket.on('bid', (data) => {
-    console.log(data);
-    io.emit('bid', data);
-  });
-});
+//   socket.on('bid', (data) => {
+//     console.log(data);
+//     io.emit('bid', data);
+//   });
+// });
 
-server.listen(3001, () => {
-  console.log('listening on *:3001');
-});
+AuctionServer.listen(3001, () => {
+  console.log("AuctionServer is Runnniig");});

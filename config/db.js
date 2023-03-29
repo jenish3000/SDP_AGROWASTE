@@ -18,12 +18,17 @@ const  db = config.get('mongoURI');
 
 function connectDB(){
     mongoose.set('strictQuery', false);
-    mongoose.connect(db);
+    mongoose.connect(db).then((resp)=>{
+        console.log("Successfully Connected to the DB");
+      })
+      .catch((err)=>{
+        console.log("Error Occured at DB connection ",err);
+      });
     const connection = mongoose.connection;
 
-    connection.once('open', ()=>{
-        console.log("DB Connected");
-    });
+    // connection.once('open', ()=>{
+    //     console.log("DB Connected");
+    // });
 }
     
 
