@@ -9,13 +9,27 @@ import DeepContext from '../../context/DeepContext';
 // this is new
 const Service = () => {
   const { showAlert } = useContext(DeepContext);
-
+  // const [start, inputStart] = useState("");
+  // const [end, inputEnd] = useState(""); 
+  // const [errorStartEmpty, isErrorStartEmpty] = useState(true);
+  // const [errorEndEmpty, isErrorEndEmpty] = useState(true);
   const navigate = useNavigate()
 
   const [service, setService] = useState({
-    email: "", mobileno: "", acre: "", ptype: "", date: "", du1: "", du2: "", type: "", mtype: ""
+    email: "", mobileno: "", acre: "", ptype: "", date1: "", du1: "", du2: "", type: "", mtype: ""
   })
 
+  const dateValidate = () => {
+    if (service.du1 > service.du2) {
+      console.log("Start > end");
+      // console.log(service.du1.valueAsNumber);
+      // console.log(service.du2.valueAsNumber);
+    } else {  
+      // console.log("Ok");
+      // console.log(service.du1.valueAsNumber);
+      // console.log(service.du2.valueAsNumber);
+    }
+  };
   const Servicefun = async (e) => {
     e.preventDefault();
 
@@ -24,7 +38,7 @@ const Service = () => {
       mobileno: service.mobileno,
       acre: service.acre,
       ptype: service.ptype,
-      date: service.date,
+      date1: service.date1,
       du1: service.du1,
       du2: service.du2,
       type: service.type,
@@ -81,22 +95,22 @@ const Service = () => {
             <label>Which crops are planted in your field?</label>
           </div>
           <span></span>
-          <div className="txt_field"  >
+          <div className="txt_field">
 
-            <input type="date" id="Date" name="Date1" value={service.date} onChange={handleInput} />
-            <label for="Date">When did you plant that crop?</label>
+            <input type="date" id="Date12" name="date1" value={service.date1} onChange={handleInput} />
+            <label >When did you plant that crop?</label>
             {/* <span></span> */}
           </div>
           <div >
 
             <div className="txt_field">
-              <input type="date" id="Date" name="du1" value={service.du1} onChange={handleInput} />
-              <label for="Date">Approx duration of harvesting.</label>
+              <input type="date" id="Date1" name="du1" value={service.du1} onChange={handleInput} />
+              <label for="Date1">Approx duration of harvesting.</label>
               {/* <span></span> */}
             </div>
 
             <div className="txt_field">
-              <input type="date" id="Date" name="du2" value={service.du2} onChange={handleInput} />
+              <input type="date" id="Date2" name="du2" value={service.du2} onChange={handleInput} />
               <label>To</label>
               {/* <span></span> */}
             </div>  </div>
@@ -108,18 +122,16 @@ const Service = () => {
           </div>
           <div className="radio-inputs jb1">
             <label className="radio">
-              <input type="radio" name="radio" />
-              <span className="name">Only Residue</span>
+              <input type="radio" name="radio"/>
+              <div className="name">Only Residue</div>
 
             </label>
             <label className="radio">
               <input type="radio" name="radio" />
-              <span className="name">Both Residue & Grains</span>
+              <div className="name">Both Residue & Grains</div>
             </label>
-          <span></span>
-
           </div>
-<span></span>
+
 
           <div className='jb' >
 

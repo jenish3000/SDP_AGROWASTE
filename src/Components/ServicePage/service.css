@@ -8,8 +8,8 @@
 
 .center{
   position: absolute;
-  top:53rem;
-  width: 50rem;
+  top:50rem;
+  width: 45rem;
   left: 50%;
   transform: translate(-50%, -50%);
   /* width: 40rem; */
@@ -262,10 +262,18 @@ input[type="submit"]:hover{
 
 .jb{
   font-size: 1.6rem;
+  justify-content: center;
 }
 .jb1{
   flex-wrap: nowrap;
   width: 33rem;
+  justify-content: center;
+  /* justify-content: center; */
+}
+
+.name{
+  display: flex;
+  justify-content: center;
 }
 
 

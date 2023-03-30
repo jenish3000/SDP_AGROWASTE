@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // const socket = io('http://localhost:3001');
-
+import"./Chat.css"
 function AuctionList(props) {
 
   const [newArr , setnewArr] = useState([]);
@@ -27,19 +27,28 @@ function AuctionList(props) {
   // }, [socket]);
 
   return (
-    <div>
-      <h2>Bids:</h2>
-      <ul>
-        {bids.map((bid,idx) => (
-          <>{1&&
-          <li style = {{listStyle:"none"}}key={idx}>
-            {bid.Bid} bid 
-            {/* {bid.id} ==== {bid.User} */}
-          </li>}
-          </>
-        ))}
-      </ul>
-    </div>
+    <div className='float-left'>
+
+    <ul>
+      {bids.map((bid,idx) => (
+        
+        <>
+        {1&&
+        // <li style={{listStyle : "none"}}>
+        <div className="chat-message" key={idx}>
+          <span className="sender">{bid.User}</span>
+          <span className="message">{bid.Bid}</span>
+          &nbsp;
+          &nbsp;
+          <span className="timestamp">12:35 PM</span>
+        </div>
+        // </li>
+        }
+        </>
+      ))}
+    </ul>
+    {/* </div></div></div> */}
+  </div>
   );
 }
 

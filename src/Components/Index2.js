@@ -16,6 +16,7 @@ import OptionLogin from './OptionPage/OptionLogin';
 import DeepState from '../context/DeepState';
 import Alert from './Alert';
 import Navbar from './Navbar/Navbar';
+import Research from './HomePage/ResearchPage/Research'
 const Index2 = () => {
   return (
     <>
@@ -37,6 +38,7 @@ const Index2 = () => {
         <Route path='/AuctionList' element={<AuctionList/>}/>
         <Route path='/Forget' element={<Forget/>}/>
         <Route path='/Service' element={<Service/>}/>
+        <Route path='/Research' element={<Research/>}/>
        </Routes>
     </DeepState>
     </Router>

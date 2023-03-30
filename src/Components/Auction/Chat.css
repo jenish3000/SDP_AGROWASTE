@@ -1,0 +1,28 @@
+.chat-container {
+    margin-top: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    height: 500px;
+    overflow-y: scroll;
+    background-color: aliceblue;
+  }
+
+  .chat-message {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+
+  .chat-message .sender {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .chat-message .timestamp {
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  .chat-input {
+    margin-top: 20px;
+  }

@@ -9,7 +9,17 @@ import DeepContext from '../../context/DeepContext';
 
 const LoginCompany = () => {
   const {showAlert,user,LOGIN}=useContext(DeepContext);
+// const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // const handleLogin = () => {
+  //   // handle login logic
+  //   setIsLoggedIn(true);
+  // };
+
+  // const handleLogout = () => {
+  //   // send logout request to server
+  //   setIsLoggedIn(false);
+  // };
   const navigate = useNavigate()
   
   const [Company,setCompany] = useState({
@@ -39,7 +49,7 @@ const LoginCompany = () => {
       email: Company.email,
       password: Company.password
     })
-    console.log("inside company   ,"+data);
+    // console.log("inside company   ,"+data);
     if(data.data){
       showAlert(data.data.message,'success');
       // <submit/>

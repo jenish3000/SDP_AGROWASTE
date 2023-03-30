@@ -82,7 +82,7 @@ import io from 'socket.io-client';
 import AuctionList from './AuctionList';
 import {nanoid} from 'nanoid';
 import DeepContext from '../../context/DeepContext';
-
+import "./Chat.css"
 const socket = io('http://localhost:3001');
 
 function Auction(props) {
@@ -164,7 +164,10 @@ function Auction(props) {
   
   return (
     <>
-    <form onSubmit={SubmitCode}>
+   
+    <div className="container mx-2">
+        <h1>Enter Code</h1>
+        <form onSubmit={SubmitCode}>
     <input
         type="number"
         value={Code}
@@ -172,17 +175,29 @@ function Auction(props) {
       />
       <button type="submit">Submit</button> 
     </form>
-    <p>---------------</p>
-    <p>Starting Bid is : {Start} || Current Highest Bid : {Hig}</p>
-    <AuctionList bids = {bids}/>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="number"
-        value={amount}
-        onChange={(event) => setAmount(event.target.value)}
-      />
-      <button type="submit">Submit Bid</button>
-    </form>
+    <div className="row">
+      <div className="col-md-8 offset-md-2">
+        <h1 className="text-center">Auction</h1>
+        <h3 className="text-center">Intial Bid : {Start} 
+ || Highest Bid : {Hig}</h3>
+<div className="chat-container">
+
+ <AuctionList bids={bids}/>
+ </div>
+ <form onSubmit={handleSubmit}>
+        <div className="chat-input">
+          <div className="input-group">
+            <input type="number"  value ={amount} onChange={(event) => setAmount(event.target.value)}  className="form-control" placeholder="Type your message..."/>
+            <div className="input-group-append">
+              <button type="submit" className="btn btn-primary">Send</button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+    
+  </div>
     </>
   );
 }
