@@ -57,7 +57,12 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
 
+// app.get('/', (req, res) => {
+//   // assume we have some authentication middleware to get the user's role
+//   const userType = req.userType;
 
+//   res.send(userType);
+// });
 app.use('/',router);
 
 const PORT =  5000;

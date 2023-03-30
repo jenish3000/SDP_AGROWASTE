@@ -17,7 +17,7 @@ const ServiceSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    date:{
+    date1:{
         type:Date,
         required:true
     },

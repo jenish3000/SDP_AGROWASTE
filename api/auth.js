@@ -20,6 +20,16 @@ router.get('/',auth,async (req,res)=>{
     try{
         const User = await User.findById(req.user.id).select('-password');
         const Company = await Company.findById(req.user.id).select('-password');
+        if(req.session.email){
+            res.status(200).send({ loggedIn: true });
+        }
+        // else if(Company){
+        //     res.status(200).send({ loggedIn: true,UserType:Company });
+
+        // }
+        else{
+            res.status(200).send({ loggedIn: false });
+        }
     } catch(err){
         console.error(err.message)
         res.status(500).send('Server Error');
