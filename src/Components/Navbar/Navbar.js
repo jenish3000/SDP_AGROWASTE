@@ -19,7 +19,7 @@ function Navbar() {
         const user1=localStorage.getItem("user");
         // console.log(user1);
         setUser(user1);
-        // console.log("hehehehhe",loggedin);
+        console.log("hehehehhe",loggedin);
     },[loggedin]);
 
     const Logout= () => {
@@ -27,7 +27,7 @@ function Navbar() {
         //     .then(() => setLoggedIn(false))
         //     .catch(err => console.log(err));
         // localStorage.setItem("user",'');
-        localStorage.setItem("loggedin",false);
+        localStorage.setItem("loginC",false);
         localStorage.removeItem("user");
         setUser(null);
         LOGIN(null,false);
@@ -77,8 +77,8 @@ function Navbar() {
                         {/* <button role="button" className="button-name" onClick={handleLogin}>
                             SIGN IN</button> */}
        {              
-    (loggedin===true)
-       ? <button role="button" className="button-name" onClick={Logout}>Logout</button>: <button role="button" className="button-name" onClick={handleLogin}>Login</button>
+    (loggedin)? <button role="button" className="button-name" onClick={Logout}>Logout</button>: 
+       <button role="button" className="button-name" onClick={handleLogin}>Login</button>
     
       }
                     </div>

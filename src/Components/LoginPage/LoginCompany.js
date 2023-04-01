@@ -54,7 +54,7 @@ const LoginCompany = () => {
       showAlert(data.data.message,'success');
       // <submit/>
       // let Cname=data.data.data.name;
-      localStorage.setItem("loggedin",true);
+      localStorage.setItem("loginC",true);
       LOGIN(data.data.data.name,true);
       localStorage.setItem('user',data.data.data.name);
       // console.log("hi jenish",user);
