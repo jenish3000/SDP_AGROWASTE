@@ -4,15 +4,15 @@ import"./Chat.css"
 function AuctionList(props) {
 
   const [newArr , setnewArr] = useState([]);
-  const {bids} = props;
+  const {bids,user} = props;
   // bids.reverse();
-    useEffect(()=>{
+  //    useEffect(()=>{
       // const x  = bids;
       // x.reverse();
       // setnewArr([...x.slice(0,3)])
-      let x = bids;
-      console.log("new bids " ,x.reverse());
-    },[]);
+      // let x = bids;
+      // console.log("new bids " ,x.reverse());
+    // },[]);
   // const [bids, setBids] = useState([]);
 
   // useEffect(() => {
@@ -27,8 +27,8 @@ function AuctionList(props) {
   // }, [socket]);
 
   return (
-    <div className='float-left'>
-
+    // <div className={bid.User===user?'Float-right':'Float-left'}>
+<div>
     <ul>
       {bids.map((bid,idx) => (
         
@@ -36,11 +36,14 @@ function AuctionList(props) {
         {1&&
         // <li style={{listStyle : "none"}}>
         <div className="chat-message" key={idx}>
+        {/* <div className="float-right" > */}
+          <div className={bid.User===user?'float-right':'float-left'}>
           <span className="sender">{bid.User}</span>
           <span className="message">{bid.Bid}</span>
           &nbsp;
           &nbsp;
           <span className="timestamp">12:35 PM</span>
+        </div>
         </div>
         // </li>
         }

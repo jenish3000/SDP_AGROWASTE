@@ -10,7 +10,7 @@ import Carousel from '../Carousel';
 import { countries } from '../Data';
 // import FarmerHome from '../LogHomePage/FarmerHome';
 import Piechart from './piechart/Piechart';
-import Research from './ResearchPage/Research';
+import Research from './ResearchPage/Research'; 
 // import Service from '../ServicePage/Service';
 import './HomeStyle.css'
 const Home = () => {
@@ -113,7 +113,7 @@ const Home = () => {
 </button>
                         </div>
                         </div>
-              
+              <div className="space"></div>
                 {/* Contact us page */}
                  <div id="contact"> <Contact/></div>
 

@@ -95,16 +95,18 @@ function Auction(props) {
   const [bids,setbids] = useState([]);
   const [h,setH] = useState([]);
   const [Start,setStart] = useState(0);
-  const {user,setUser}=useContext(DeepContext);
+  const [user,setUser] = useState('');
+  // const {user,setUser}=useContext(DeepContext);
   const [Hig,setHig] = useState(0);
   const handleSubmit = (event) => {
     event.preventDefault();
     // setUser("qq");
+  
     console.log("hii i am msg",user);
     // console.log(price,amount);
     if(Hig < amount){ 
       setprice(amount);
-      // console.log(price);
+      console.log(user);
       socket.emit('send_bid', { bid : amount,Code,user});
       socket.on("error_bid",(data)=>{
         console.log("Hello from inside");
@@ -142,6 +144,13 @@ function Auction(props) {
     
   }
   useEffect(() => {
+    const user1=localStorage.getItem('user');
+    console.log(user1);
+    setUser(user1);
+    socket.on("auth_error",(data)=>{
+      alert(data.msg);
+
+    })
     socket.on("receive_bid",(data)=>{
       console.log(data);
       setH((h)=>[...h,data]);
@@ -182,7 +191,7 @@ function Auction(props) {
  || Highest Bid : {Hig}</h3>
 <div className="chat-container">
 
- <AuctionList bids={bids}/>
+ <AuctionList bids={bids} user={user}/>
  </div>
  <form onSubmit={handleSubmit}>
         <div className="chat-input">

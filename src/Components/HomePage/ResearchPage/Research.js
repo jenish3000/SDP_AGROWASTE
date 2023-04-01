@@ -2,40 +2,63 @@ import React, { useState,useEffect } from "react";
 import './Research.css'
 const Reasearch = () => {
     const [input,setInput]=useState('');
-    useEffect(() => {
-        const form = document.querySelector('#f1');
+    const [box1,setBox]=useState('');
+    const [residue1,setResidue]=useState('');
+    const [price1,setPrice]=useState('');
+    // useEffect(() => {
+        // const form = document.querySelector('#f1');
 
         // Add an event listener to the form for the 'submit' event
-        form.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
+        // form.addEventListener('submit', function (event) {
+            // event.preventDefault(); // Prevent the default form submission
 
             // Call a function to execute the script
-            handleSubmit();
-        });
+            // handleSubmit();
+        // });
+        
 
-        function handleSubmit() {
-            var inp = parseFloat(document.getElementById("input").value);
+        // function handleSubmit() {
+        //     var inp = parseFloat(document.getElementById("input").value);
 
 
-            var box = document.getElementById("box");
-            let boxl = 280 * inp;
-            var boxn = document.createTextNode(boxl);
-            box.appendChild(boxn);
+        //     var box = document.getElementById("box");
+        //     let boxl = 280 * inp;
+        //     var boxn = document.createTextNode(boxl);
+        //     box.appendChild(boxn);
 
-            var residue = document.getElementById("residue");
-            let residuel = 24 * boxl;
-            var residuen = document.createTextNode(residuel);
-            residue.appendChild(residuen);
+        //     var residue = document.getElementById("residue");
+        //     let residuel = 24 * boxl;
+        //     var residuen = document.createTextNode(residuel);
+        //     residue.appendChild(residuen);
 
-            var price = document.getElementById("price");
-            let pricel = residuel * 5;
-            var pricen = document.createTextNode(pricel);
-            price.appendChild(pricen);
+        //     var price = document.getElementById("price");
+        //     let pricel = residuel * 5;
+        //     var pricen = document.createTextNode(pricel);
+        //     price.appendChild(pricen);
 
-            document.getElementById("input").value = "";
+        //     document.getElementById("input").value = "";
 
-        }
-    });
+        // }
+    // });
+ 
+    const jb=(e)=>{
+        e.preventDefault();
+        const inq=document.getElementById("input").value;
+        
+        setInput(inq);
+
+        const nbox=280*inq;
+        setBox(nbox);
+        const residue=24*nbox;
+        setResidue(residue);
+        const nPrice=5*residue;
+        setPrice(nPrice);
+            // console.log(nbox);
+            // console.log(residue);
+            // console.log(nPrice);
+    
+    }
+    
 
     return (
         <>
@@ -47,19 +70,20 @@ const Reasearch = () => {
                     <hr /><hr />
                 </header>
                 <div>
-                    <form id="f1" onsubmit="handleSubmit(); return false;">
+                    <form id="f1" >
                    
-                        <input type="text" id="input" name="input" value={input.input} />(in hector)
-                        <input type="submit"  id="submit" />
+                        <input type="text" id="input" name="input"  />(in hector)
+                        {/* <input type="submit"  id="submit" /> */}
+                        <button type="submit" className="btn btn-primary" onClick={jb}>Submit</button>
                         <label id="l1"> Enter size of farm:</label>
                         
                     </form>
                     <div id="result">
-                        Box Generated:<div id="box"></div>
+                        Box Generated:<div id="box">{box1}</div>
                         <br />
-                        Total residue(waste) Generated (in kgs):<div id="residue"></div>
+                        Total residue(waste) Generated (in kgs):<div id="residue">{residue1}</div>
                         <br />
-                        Total expected revenue: Rs<div id="price"></div>
+                        Total expected revenue: Rs<div id="price">{price1}</div>
                         <br />
                     </div>
 

@@ -1,24 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext,useState, useEffect } from 'react';
 import axios from 'axios';
 import './Navbar.css';
-// import Home from '../HomePage/Home';
+import Home from '../HomePage/Home';
+
 import OptionSignup from '../OptionPage/OptionSignup';
+import DeepContext from '../../context/DeepContext';
 import OptionLogin from '../OptionPage/OptionLogin';
 import { useNavigate } from 'react-router-dom';
 function Navbar() {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [user, setUser] = useState("");
+    const {loggedin,LOGIN}=useContext(DeepContext);
+    // const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
-        axios.get('/')
-            .then(res => setLoggedIn(res.data.loggedIn))
-            .catch(err => console.log(err));
-    }, []);
+        // axios.get('/')
+        //     .then(res => setLoggedIn(res.data.loggedIn))
+        //     .catch(err => console.log(err));
+        const user1=localStorage.getItem("user");
+        // console.log(user1);
+        setUser(user1);
+        // console.log("hehehehhe",loggedin);
+    },[loggedin]);
 
-    const handleLogout = () => {
-        axios.post('/')
-            .then(() => setLoggedIn(false))
-            .catch(err => console.log(err));
+    const Logout= () => {
+        // axios.post('/')
+        //     .then(() => setLoggedIn(false))
+        //     .catch(err => console.log(err));
+        // localStorage.setItem("user",'');
+        localStorage.setItem("loggedin",false);
+        localStorage.removeItem("user");
+        setUser(null);
+        LOGIN(null,false);
+        navigate('/')
+        // console.log("jenish",user);
     };
+    
 
     const navigate = useNavigate();
     const handleSignup = () => {
@@ -60,11 +76,11 @@ function Navbar() {
 
                         {/* <button role="button" className="button-name" onClick={handleLogin}>
                             SIGN IN</button> */}
-                            {  loggedIn ? (
-        <button role="button" className="button-name" onClick={handleLogout}>Logout</button>
-      ) : (
-        <button role="button" className="button-name" onClick={handleLogin}>Login</button>
-      )}
+       {              
+    (loggedin===true)
+       ? <button role="button" className="button-name" onClick={Logout}>Logout</button>: <button role="button" className="button-name" onClick={handleLogin}>Login</button>
+    
+      }
                     </div>
                     
                 </div>

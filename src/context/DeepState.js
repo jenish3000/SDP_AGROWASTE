@@ -4,15 +4,21 @@ import { useNavigate } from "react-router-dom";
 import DeepContext from "./DeepContext";
 import axios from "axios";
 const DeepState = (props)=>{
+  const setlogin=localStorage.getItem('loggedin');
   const [user,setUser]=useState('');
     const [alert, setalert] = useState(null);
+    const [loggedin, setLoggedin] = useState(setlogin);
     
     const navigate = useNavigate();
  
     // const BaseUrl = 'http://localhost:5000'
-    useEffect(()=>console.log("hellos"),[alert]);
-const LOGIN=(value)=>{
-  setUser(value)
+    // useEffect(()=>console.log("hello"),[alert]);
+const LOGIN=(value,state)=>{
+  localStorage.setItem("loggedin",state);
+  console.log("hiiiii",value,state);
+  setUser(value);
+  setLoggedin(state);
+
 }
 
   {  const showAlert=(message,type)=>{
@@ -31,7 +37,7 @@ const LOGIN=(value)=>{
   
 
     return(
-        <DeepContext.Provider value={{showAlert,alert,user,LOGIN}}>
+        <DeepContext.Provider value={{showAlert,alert,user,LOGIN,loggedin}}>
                {props.children}
         </DeepContext.Provider>
     )

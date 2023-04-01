@@ -8,9 +8,9 @@ import Index2 from './Components/Index2';
 function App() {
   return (
     <>
-    <React.StrictMode>
+
       <Index2/>
-      </React.StrictMode>
+     
     </>
   );
 }

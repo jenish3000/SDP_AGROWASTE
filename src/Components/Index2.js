@@ -22,7 +22,7 @@ const Index2 = () => {
     <>
        <Router>
     <DeepState>
-      <Navbar></Navbar>
+      <Navbar/>
       <Alert/>
        <Routes>
         <Route path='/' element={<Home/>}/>
