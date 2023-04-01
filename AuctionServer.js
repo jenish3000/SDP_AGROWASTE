@@ -87,7 +87,11 @@ io.on('connection',(socket)=>{
 
 
   socket.on('send_bid',async(data)=>{
-    // console.log("Data on Bid eve ",data);
+    console.log("Data on Bid eve ",data);
+    if(!data.user){
+      socket.emit("auth_error",{msg:"user not exists!"});
+    }
+    else{
     let resp = await AuctionModel.find({Room:data.Code}).sort({_id:-1}).limit(1);
     let res;
     if(resp){
@@ -108,6 +112,7 @@ io.on('connection',(socket)=>{
       console.log("Error",data.bid,resp.Bid);
       socket.emit("error_bid",res);
     }
+  }
   })
 })
 

@@ -7,7 +7,7 @@ const Auction = mongoose.Schema({
     },
     User : {
         type : String,
-        // required : true
+        required : true 
     },
     Room :{
         type : String,
