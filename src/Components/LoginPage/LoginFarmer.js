@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../context/DeepContext';
 const LoginFarmer = () => {
-  const {showAlert}=useContext(DeepContext);
+  const {showAlert,LoginF}=useContext(DeepContext);
   const navigate = useNavigate()
 
   const [user,setuser] = useState({
@@ -24,7 +24,7 @@ const LoginFarmer = () => {
     console.log(data);
     if(data.data){
       showAlert(data.data.message,'success');
-      
+      LoginF('true');
       navigate('/')
     }else{
       showAlert(data.data.message,'danger');

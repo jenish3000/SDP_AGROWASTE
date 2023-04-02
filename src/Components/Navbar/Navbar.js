@@ -9,7 +9,7 @@ import OptionLogin from '../OptionPage/OptionLogin';
 import { useNavigate } from 'react-router-dom';
 function Navbar() {
     const [user, setUser] = useState("");
-    const {loggedin,LOGIN}=useContext(DeepContext);
+    const {loggedinC,LoginC,loggedinF,LoginF,loggedinA,LoginA}=useContext(DeepContext);
     // const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -19,8 +19,8 @@ function Navbar() {
         const user1=localStorage.getItem("user");
         // console.log(user1);
         setUser(user1);
-        console.log("hehehehhe",loggedin);
-    },[loggedin]);
+        console.log("hehehehhe",loggedinF , "dfsd",loggedinA,"dfsd",loggedinC);
+    },[loggedinA,loggedinC,loggedinF]);
 
     const Logout= () => {
         // axios.post('/')
@@ -28,9 +28,13 @@ function Navbar() {
         //     .catch(err => console.log(err));
         // localStorage.setItem("user",'');
         localStorage.setItem("loginC",false);
+        localStorage.setItem("loginA",false);
+        localStorage.setItem("loginF",false);
         localStorage.removeItem("user");
         setUser(null);
-        LOGIN(null,false);
+        LoginC(null,'false');
+        LoginA('false');
+        LoginF('false');
         navigate('/')
         // console.log("jenish",user);
     };
@@ -71,16 +75,43 @@ function Navbar() {
                     </div>
                     <div className="signin btn" id="log-btn">
 
-                        <button role="button" className="button-name" onClick={handleSignup}>
-                            REGISTER</button>
 
                         {/* <button role="button" className="button-name" onClick={handleLogin}>
                             SIGN IN</button> */}
        {              
-    (loggedin)? <button role="button" className="button-name" onClick={Logout}>Logout</button>: 
-       <button role="button" className="button-name" onClick={handleLogin}>Login</button>
-    
+    (loggedinA === 'true')?
+    <>
+    <button role="button" className="button-name" onClick={Logout}>Admin</button>    
+    </>: 
+    <></>
+     }
+        {              
+    (loggedinC === 'true')?
+    <>
+    <button role="button" className="button-name" onClick={Logout}>Company</button>
+    </>: 
+    <></>
       }
+  {              
+    (loggedinF === 'true')?
+    <>
+    <button role="button" className="button-name" onClick={Logout}>Farmer</button>
+    </>:
+    <></>
+      }
+      {
+        (loggedinA === 'false' && loggedinC === 'false' && loggedinF === 'false')?
+        <>
+    
+    <button role="button" className="button-name" onClick={handleSignup}>
+                            REGISTER</button>
+    <button role="button" className="button-name" onClick={handleLogin}>LogIn</button> 
+
+        </>:
+    <button role="button" className="button-name" onClick={Logout}>LogOut</button> 
+      }
+      
+
                     </div>
                     
                 </div>

@@ -4,21 +4,34 @@ import { useNavigate } from "react-router-dom";
 import DeepContext from "./DeepContext";
 import axios from "axios";
 const DeepState = (props)=>{
-  const loginC=localStorage.getItem('loginC');
+  const loginC=localStorage.getItem('loginC'); // company
+  const loginF=localStorage.getItem('loginF'); //farmer
+  const loginA=localStorage.getItem('loginA'); //admin
+
   const [user,setUser]=useState('');
     const [alert, setalert] = useState(null);
-    const [loggedin, setLoggedin] = useState(loginC);
+    const [loggedinC, setLoggedinC] = useState(loginC);
+    const [loggedinF, setLoggedinF] = useState(loginF);
+    const [loggedinA, setLoggedinA] = useState(loginA);
     
     const navigate = useNavigate();
  
     // const BaseUrl = 'http://localhost:5000'
-    useEffect(()=>console.log("hello"),[alert]);
-const LOGIN=(value,state)=>{
+    useEffect(()=>console.log("hello",loggedinA,"Dsafsd",loggedinC,"dsfsd",loggedinF),[alert,loggedinA,loggedinC,loggedinF]);
+const LoginC=(value,state)=>{
   localStorage.setItem("loginC",state);
   console.log("hiiiii",value,state);
   setUser(value);
-  setLoggedin(state);
+  setLoggedinC(state);
+}
 
+const LoginF = (state) =>{
+  localStorage.setItem("loginF",state);
+  setLoggedinF(state);
+}
+const LoginA = (state)=>{
+  localStorage.setItem("loginA",state);
+  setLoggedinA(state);
 }
 
   {  const showAlert=(message,type)=>{
@@ -37,7 +50,7 @@ const LOGIN=(value,state)=>{
   
 
     return(
-        <DeepContext.Provider value={{showAlert,alert,user,LOGIN,loggedin}}>
+        <DeepContext.Provider value={{showAlert,alert,user,LoginC,loggedinC,LoginA,loggedinA,LoginF,loggedinF}}>
                {props.children}
         </DeepContext.Provider>
     )
