@@ -20,7 +20,7 @@ const DeepState = (props)=>{
     useEffect(()=>console.log("hello",loggedinA,"Dsafsd",loggedinC,"dsfsd",loggedinF),[alert,loggedinA,loggedinC,loggedinF]);
 const LoginC=(value,state)=>{
   localStorage.setItem("loginC",state);
-  console.log("hiiiii",value,state);
+  // console.log("hiiiii",value,state);
   setUser(value);
   setLoggedinC(state);
 }

@@ -22,10 +22,10 @@ const LoginFarmer = () => {
       password: user.password
     })
     console.log(data);
-    if(data.data){
+    if(data.data.success){
       showAlert(data.data.message,'success');
       LoginF('true');
-      navigate('/')
+      navigate('/FarmerHome')
     }else{
       showAlert(data.data.message,'danger');
     }
@@ -48,7 +48,7 @@ const LoginFarmer = () => {
         <div className="txt_field">  
 
           <input type="text" required name='email' value={user.email} onChange={handleInput}/>
-          <label>Username</label>
+          <label>mobile number</label>
         </div>
         <div className="txt_field"> 
 

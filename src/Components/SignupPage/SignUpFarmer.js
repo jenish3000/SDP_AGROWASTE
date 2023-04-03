@@ -23,8 +23,8 @@ const SignUpFarmer = () => {
         email: user.email,
         password: user.password,
       })
-      console.log(data.data);
-      if (data.status === 200) {
+      console.log("focus here",data.data);
+      if (data.data.success) {
         showAlert(data.data.message,'success');
         navigate('/LoginFarmer')
       } else {

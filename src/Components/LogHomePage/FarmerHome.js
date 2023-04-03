@@ -1,18 +1,18 @@
 import React from 'react'
 // import Login from '../LoginPage/Login'
-import Contact from '../HomePage/ContactUsPage/Contact'
-import Aboutus from '../HomePage/AboutUs/Aboutus'
-// import Navbar from '../Navbar/Navbar';
-// import Auction from '../Auction/Auction'
-import Carousel from '../Carousel';
-import { countries } from '../Data';
+import Contact from '../homeComponent/ContactUsPage/Contact'
+import Aboutus from '../homeComponent/AboutUs/Aboutus'
+import Carousel from '../homeComponent/CarouselPage/Carousel';
+import { countries } from '../homeComponent/CarouselPage/Data';
+import Piechart from '../homeComponent/piechart/Piechart';
+import Research from '../homeComponent/ResearchPage/Research'; 
 // import Service from '../ServicePage/Service';
-import './FarmerHome.css'
+import './Home.css'
 const Home = () => {
     return (
         <>
             {/* <Navbar/> */}
-            <div className='main'>
+            <div className='main' id="HOME">
                 <div className="bodymain">
                     <div className="carousel"> <Carousel images={countries}/></div>
                
@@ -21,10 +21,10 @@ const Home = () => {
                     </div> */}
                     <div className="space"></div>
                     <div className="service navbar-container">
-                            {/* <button className="button service button-name">
-                               <a href="Service">service</a> </button> */}
-                               <button className="button service Auction button-name">
-                               <a href="Auction">Auction</a> </button>
+                            <button className="button service button-name">
+                               <a href="Service">service</a> </button>
+                               {/* <button className="button service Auction button-name">
+                               <a href="Auction">Auction</a> </button> */}
                     </div>
                     {/* <div className="Auction navbar-container">
                             <button className="button service button-name">

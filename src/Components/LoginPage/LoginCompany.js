@@ -50,7 +50,7 @@ const LoginCompany = () => {
       password: Company.password
     })
     // console.log("inside company   ,"+data);
-    if(data.data){
+    if(data.data.success){
       showAlert(data.data.message,'success');
       // <submit/>
       // let Cname=data.data.data.name;
@@ -59,7 +59,7 @@ const LoginCompany = () => {
       localStorage.setItem('user',data.data.data.name);
       // console.log("hi jenish",user);
       // console.log("hiiii",data.data.data.name);
-      navigate('/')
+      navigate('/CompanyHome')
     }else{
       showAlert(data.data.message,'danger');
     }

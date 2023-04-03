@@ -106,10 +106,10 @@ function Auction(props) {
     // console.log(price,amount);
     if(Hig < amount){ 
       setprice(amount);
-      console.log(user);
+      // console.log(user);
       socket.emit('send_bid', { bid : amount,Code,user});
       socket.on("error_bid",(data)=>{
-        console.log("Hello from inside");
+        // console.log("Hello from inside");
         alert("Invalid bid for User");
       })
     }
@@ -126,14 +126,14 @@ function Auction(props) {
       alert("can not find room with this id");
     })
     socket.on("starting_bid",(data)=>{
-      console.log("data is here",data);
+      // console.log("data is here",data);
       setStart(data);
     })
     socket.on("curr_bid",(data)=>{
       setHig(data);
     })
     socket.on("bids",(data)=>{
-      console.log("kya mast mossam hai",[...data]);
+      // console.log("kya mast mossam hai",[...data]);
       setbids((bids)=>{
         if(bids&&!bids.includes(data)){
           setbids([...bids,...data]);

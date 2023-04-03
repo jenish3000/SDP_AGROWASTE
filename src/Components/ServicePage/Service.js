@@ -19,17 +19,18 @@ const Service = () => {
     email: "", mobileno: "", acre: "", ptype: "", date1: "", du1: "", du2: "", type: "", mtype: ""
   })
 
-  const dateValidate = () => {
-    if (service.du1 > service.du2) {
-      console.log("Start > end");
-      // console.log(service.du1.valueAsNumber);
-      // console.log(service.du2.valueAsNumber);
-    } else {  
-      // console.log("Ok");
-      // console.log(service.du1.valueAsNumber);
-      // console.log(service.du2.valueAsNumber);
-    }
-  };
+  // const dateValidate = () => {
+  //   if (service.du1 > service.du2) {
+  //     console.log("Start > end");
+  //     // console.log(service.du1.valueAsNumber);
+  //     // console.log(service.du2.valueAsNumber);
+  //   } 
+  //   // else {  
+  //     // console.log("Ok");
+  //     // console.log(service.du1.valueAsNumber);
+  //     // console.log(service.du2.valueAsNumber);
+  //   // }
+  // };
   const Servicefun = async (e) => {
     e.preventDefault();
 
@@ -45,10 +46,10 @@ const Service = () => {
       mtype: service.mtype,
 
     })
-    console.log(data.data);
+    console.log("data of service :::",data.data);
     if (data.data.success) {
       showAlert(data.data.msg, 'success');
-      navigate('/')
+      navigate('/SuccessPage')
     } else {
       showAlert(data.data.msg, 'danger');
     }
@@ -73,7 +74,7 @@ const Service = () => {
       {/* <div className="space"></div> */}
       <div className="center JB">
         <h1>Details</h1>
-        <form onSubmit={Servicefun} method="POST" id="myForm">
+        <form id="myForm" onSubmit={Servicefun} method="POST">
           <div className="txt_field">
             <input type="text" required name='email' value={service.email} onChange={handleInput} />
 
@@ -97,7 +98,7 @@ const Service = () => {
           <span></span>
           <div className="txt_field">
 
-            <input type="date" id="Date12" name="date1" value={service.date1} onChange={handleInput} />
+            <input type="date" id="Date1" name="date1" value={service.date1} onChange={handleInput} />
             <label >When did you plant that crop?</label>
             {/* <span></span> */}
           </div>
@@ -122,12 +123,12 @@ const Service = () => {
           </div>
           <div className="radio-inputs jb1">
             <label className="radio">
-              <input type="radio" name="radio"/>
+              <input type="radio" name="radio" value={service.type} />
               <div className="name">Only Residue</div>
 
             </label>
             <label className="radio">
-              <input type="radio" name="radio" />
+              <input type="radio" name="radio" value={service.type} />
               <div className="name">Both Residue & Grains</div>
             </label>
           </div>
@@ -141,35 +142,35 @@ const Service = () => {
           <div >
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value={service.mtype}  />
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Harvester</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value={service.mtype}  />
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 1</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value={service.mtype}   />
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 2</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value={service.mtype}  />
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 3</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value={service.mtype}   />
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 4</label>

@@ -20,10 +20,10 @@ const LoginAdmin = () => {
       email: Admin.email,
       password: Admin.password
     })
-    if(data.data){
+    if(data.data.success){
       showAlert(data.data.message,'success');
       LoginA('true');
-      navigate('/')
+      navigate('/AdminHome')
     }else{
       showAlert(data.data.message,'danger');
     }

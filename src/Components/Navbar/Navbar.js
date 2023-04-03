@@ -19,7 +19,7 @@ function Navbar() {
         const user1=localStorage.getItem("user");
         // console.log(user1);
         setUser(user1);
-        console.log("hehehehhe",loggedinF , "dfsd",loggedinA,"dfsd",loggedinC);
+        // console.log("hehehehhe",loggedinF , "dfsd",loggedinA,"dfsd",loggedinC);
     },[loggedinA,loggedinC,loggedinF]);
 
     const Logout= () => {
@@ -49,6 +49,12 @@ function Navbar() {
         navigate('OptionLogin');
         // setIsLoggedIn(true);
     }
+
+    const ProfileFun=()=>{
+        navigate('ProfileFun');
+    }
+  
+    
     return (
         <>
             <div className="navbar-container">
@@ -61,7 +67,13 @@ function Navbar() {
                 <div className="navbar-right">
                     <div className="navbar-options">
                         <span className="navbar-options-btn">
-                            <a href='/'>Home</a>
+                         {loggedinF==='true' && <a href='/FarmerHome'>Home</a>} 
+                         {loggedinC==='true' && <a href='/CompanyHome'>Home</a> 
+                         }
+                         {loggedinA==='true' && <a href='/AdminHome'>Home</a> 
+                         }
+                         {loggedinA==='false'  && loggedinF==='false' && loggedinC==='false'  && <a href='/'>Home</a> 
+                         }
                         </span>
                         <span className="navbar-options-btn">
                             <a href="#about">About</a>
@@ -81,21 +93,21 @@ function Navbar() {
        {              
     (loggedinA === 'true')?
     <>
-    <button role="button" className="button-name" onClick={Logout}>Admin</button>    
+    <button role="button" className="button-name" onClick={ProfileFun}>Admin</button>    
     </>: 
     <></>
      }
         {              
     (loggedinC === 'true')?
     <>
-    <button role="button" className="button-name" onClick={Logout}>Company</button>
+    <button role="button" className="button-name" onClick={ProfileFun}>Company</button>
     </>: 
     <></>
       }
   {              
     (loggedinF === 'true')?
     <>
-    <button role="button" className="button-name" onClick={Logout}>Farmer</button>
+    <button role="button" className="button-name" onClick={ProfileFun}>Farmer</button>
     </>:
     <></>
       }
