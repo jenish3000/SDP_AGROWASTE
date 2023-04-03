@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const Auction = mongoose.Schema({
     Bid :{
         type : Number,
-        required:true
+        required:true,
     },
     User : {
         type : String,
-        required : true 
+        required : true,
+         
     },
     Room :{
         type : String,

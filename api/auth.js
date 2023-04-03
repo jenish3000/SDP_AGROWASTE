@@ -167,7 +167,7 @@ router.post('/SignUpFarmer',encryption, async (req, res) => {
 });
 router.post('/SignUpCompany',encryption, async (req, res) => {
     try{
-        console.log(req.body);
+        // console.log(req.body);
         const EmailExist = await Company.findOne({ email: req.body.email });
         if (EmailExist) return res.status(200).send("Email exist");
         else{
@@ -241,7 +241,7 @@ router.post('/SignUpAdmin',encryption, async (req, res) => {
 router.post("/LoginFarmer", async (req, res) => {
     
     const { email, password } = req.body;
-    const user = await User.findOne({email:req.body.email });
+    const user = await User.findOne({mobileno:email });
     // console.log(password);
     // console.log(user.password);
     if (user) {
@@ -253,13 +253,16 @@ router.post("/LoginFarmer", async (req, res) => {
           data: user,
         //   cookie: token,
           type: "Farmer",
-          message: `Hello ${user.name}, You Logged in successfully!`,
+          success:true,
+          message: `Hello    ${user.name},   You   Logged   in   successfully!`,
+          name:user.name 
+
         });
         
       } else
-        res.status(201).send({ message: "Error! : *** Invalid Password ***" });
+        res.status(201).send({ success:false ,message: "Error! : *** Invalid Password ***" });
     } else {
-      res.status(202).send({ message: "Error! : *** userNotfound ***" });
+      res.status(202).send({ success:false ,message: "Error! : *** userNotfound ***" });
     }
   });
 router.post("/LoginCompany", async (req, res) => {
@@ -281,9 +284,9 @@ router.post("/LoginCompany", async (req, res) => {
         });
   
       } else
-        res.status(201).send({ message: "Error! : *** Invalid Password ***"});
+        res.status(201).send({success:false , message: "Error! : *** Invalid Password ***"});
     } else {
-      res.status(202).send({ message: "Error! : *** userNotfound ***" });
+      res.status(202).send({ success:false ,message: "Error! : *** userNotfound ***" });
     }
   });
 router.post("/LoginAdmin", async (req, res) => {
@@ -298,19 +301,25 @@ router.post("/LoginAdmin", async (req, res) => {
           data: admin,
         //   cookie: token,
           type: "Admin",
+          name:admin.name ,
+          success:true,
           message: `Hello ${Admin.name}, You Logged in successfully!`,
         });
   
       } else
-        res.status(201).send({ message: "Error! : *** Invalid Password ***" });
+        res.status(201).send({ success:false ,message: "Error! : *** Invalid Password ***" });
     } else {
-      res.status(202).send({ message: "Error! : *** userNotfound ***" });
+      res.status(202).send({ success:false ,message: "Error! : *** userNotfound ***" });
     }
   });
 router.post('/Service', async (req, res) => {
+   
     try{
-        console.log(req.body);
+        // console.log("service req body",req.body);
+        const { email, password } = req.body;
+        const user = await User.findOne({email:req.body.email });
         const EmailExist = await service.findOne({ email: req.body.email });
+        if(user){
         if (EmailExist) return res.status(200).send("Already Requested!!!");
         else{
             const newSer = await service.create({
@@ -337,11 +346,55 @@ router.post('/Service', async (req, res) => {
             //     res.redirect('/');
             // }).catch(err => res.status(300).send(err));
         }
-    } catch(err){
+    }else{
+        res.status(401).json({success:false,msg:"you must be a farmer to make request for service!!"})
+    } 
+}catch(err){
         console.error(err.message)
         res.status(500).send('Server Error');
 
     }
 });
+router.post('/CreateRoom', async (req, res) => {
+   
+    try{
+        // console.log("service req body",req.body);
+        const user = await Admin.findOne({email:req.body.email });
+        const NameExist = await service.findOne({ email: req.body.Name });
+        if(user){
+        if (NameExist) return res.status(200).send("Already Requested!!!");
+        else{
+            const createRoom = await service.create({
+                Name:req.body.Name,
+                description:req.body.description,
+                Code:req.body.Code,
+                startDate:req.body.startDate,
+                endDate:req.body.endDate,
+               
+               // userType: req.body.type
+            });
+            // console.log("Printed",newSer);
+            if(createRoom){
+                res.json({success:true,msg:"successfully Created Room for the Auction.."})
+            }
+            else{
+                res.status(401).json({success:false,msg:"Room is not Created."})
+            }
+            // newCom.save().then((result) => {
+            //     console.log("Saved");
+            //     res.redirect('/');
+            // }).catch(err => res.status(300).send(err));
+        }
+    }else{
+        res.status(401).json({success:false,msg:"you must be a Admin to Create Room!!"})
+    } 
+}catch(err){
+        console.error(err.message)
+        res.status(500).send('Server Error');
+
+    }
+});
+
+
 
 module.exports = router;
