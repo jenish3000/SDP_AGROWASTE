@@ -7,7 +7,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../context/DeepContext';
 const LoginAdmin = () => {
-  const {showAlert,LoginA}=useContext(DeepContext);
+  const {showAlert,LoginA,user,setUser}=useContext(DeepContext);
   const navigate = useNavigate()
 
   const [Admin,setAdmin] = useState({
@@ -22,6 +22,9 @@ const LoginAdmin = () => {
     })
     if(data.data.success){
       showAlert(data.data.message,'success');
+      setUser(data.data.data)
+      
+      localStorage.setItem("userLogin",JSON.stringify(data.data.data));
       LoginA('true');
       navigate('/AdminHome')
     }else{

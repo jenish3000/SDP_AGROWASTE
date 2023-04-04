@@ -17,18 +17,20 @@ const [Room, setRoom] = useState({
 
  
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-  const data=  axios.post('http://localhost:5000/CreateRoom', {
+    
+  const data= await axios.post('http://localhost:5000/CreateRoom', {
       Name:Room.Name,
       description:Room.description,
       Code:Room.Code,
       startDate:Room.startDate,
       endDate : Room.endDate
     })
+   console.log("deep",data);
     if (data.data.success) {
       showAlert(data.data.msg,'success');
-      navigate('/AuctionHome')
+      navigate('/AdminHome')
     } else {
       showAlert(data.data.msg,'danger');
     }
@@ -48,27 +50,27 @@ const [Room, setRoom] = useState({
       <form onSubmit={handleSubmit}>
         <label>
           Name:
-          <input type="text" value={Room.Name} onChange={handleInput} />
+          <input type="text" name='Name' value={Room.Name} onChange={handleInput} />
         </label>
-        <br />
+        <br/>
         <label>
           Description:
-          <input type="text" value={Room.description} onChange={handleInput} />
+          <input type="text" name='description' value={Room.description} onChange={handleInput} />
         </label>
         <br />
         <label>
           Unique Code:
-          <input type="text" value={Room.Code} onChange={handleInput} />
+          <input type="text" name='Code' value={Room.Code} onChange={handleInput} />
         </label>
         <br />
         <label>
           Start Date:
-          <input type="datetime-local" value={Room.startDate} onChange={handleInput} />
+          <input type="datetime-local" name='startDate' value={Room.startDate} onChange={handleInput} />
         </label>
         <br />
         <label>
           End Date:
-          <input type="datetime-local" value={Room.endDate} onChange={handleInput} />
+          <input type="datetime-local" name='endDate' value={Room.endDate} onChange={handleInput} />
         </label>
         <br />
         <button type="submit">Create Room</button>
