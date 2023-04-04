@@ -231,9 +231,9 @@ html{
 
     }
   }
-  @media(max-width:350px){
+  @media(max-width:380px){
     html{ 
-      font-size: 45%;
+      font-size: 50%;
 
     }
   }

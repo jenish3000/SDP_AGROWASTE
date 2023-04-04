@@ -33,7 +33,15 @@ const Service = () => {
   // };
   const Servicefun = async (e) => {
     e.preventDefault();
-
+    const ele=document.getElementById("myRadio").value;
+    let i;
+    for(i = 0;i < ele.length;i++){
+      // if(ele[i].checked)
+      console.log("element",ele[i].value);
+      // document.getElementById("result").innerHTML
+      //         = "choice: "+ele[i].value;
+  }
+    // console.log("radio1 value",radio1);
     const data = await axios.post('http://localhost:5000/Service', {
       email: service.email,
       mobileno: service.mobileno,
@@ -123,16 +131,17 @@ const Service = () => {
           </div>
           <div className="radio-inputs jb1">
             <label className="radio">
-              <input type="radio" name="radio" value={service.type} />
+              <input type="radio" id="myRadio" name="radio" value={service.type} />
               <div className="name">Only Residue</div>
 
             </label>
             <label className="radio">
-              <input type="radio" name="radio" value={service.type} />
+              <input type="radio" id="myRadio" name="radio" value={service.type} />
               <div className="name">Both Residue & Grains</div>
             </label>
           </div>
-
+{/* kar have  ubhi re join tham
+*/}
 
           <div className='jb' >
 

@@ -12,7 +12,7 @@ function Navbar() {
     const { loggedinC, LoginC, loggedinF, LoginF, loggedinA, LoginA, user, setUser } = useContext(DeepContext);
     // const [loggedIn, setLoggedIn] = useState(false);
     useEffect(() => {
-        console.log("User-->", user);
+        // console.log("User-->", user);
     }, [user])
     useEffect(() => {
         let u = JSON.parse(localStorage.getItem("userLogin"));
@@ -58,7 +58,7 @@ function Navbar() {
     }
 
     const ProfileFun = () => {
-        navigate('ProfileFun');
+        navigate('Profile');
     }
 
 
