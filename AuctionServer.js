@@ -6,7 +6,7 @@ const AuctionServer = http.createServer(app);
 
 const {Server} = require('socket.io');
 
-const AuctionModel = require('./models/MessageModel');
+const AuctionModel = require('./models/Auction');
 const RoomModel = require('./models/AuctionRoom');
 
 const MAX_SOCKETS_PER_TAB = 2;

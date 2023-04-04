@@ -409,7 +409,8 @@ router.post("/AdminHome",async(req,res)=>{
 
         if(room && service){
             res.status(200).send({room,service});
-        }else{
+        }
+        else{
             res.status(202).send({message:"Not Found!"});
         }
 
