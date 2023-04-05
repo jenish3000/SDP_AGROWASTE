@@ -33,6 +33,27 @@ const Service = () => {
   const Servicefun = async (e) => {
     e.preventDefault();
 
+    const data1 = document.getElementsByName("radio1");
+    for(let i = 0 ; i < data1.length; i++){
+      if(data1[i].checked){
+        console.log(data1[i].value);
+      }
+    }
+    const newValue = document.getElementsByClassName('myCheckBox');
+    for(let i =0; i< newValue.length; i++){
+      if(newValue[i].checked){
+        console.log(newValue[i].value);
+      }
+    }
+    const date12 = document.getElementById('Date12').value;
+    console.log("hello",date12);
+
+    const date1 = document.getElementById('Date1').value;
+    console.log("hello",date1);
+
+    const date2 = document.getElementById('Date2').value;
+    console.log("hello",date2);
+    
     const data = await axios.post('http://localhost:5000/Service', {
       email: service.email,
       mobileno: service.mobileno,
@@ -122,12 +143,12 @@ const Service = () => {
           </div>
           <div className="radio-inputs jb1">
             <label className="radio">
-              <input type="radio" name="radio"/>
+              <input type="radio" name="radio1" value ="Only Residue"/>
               <div className="name">Only Residue</div>
 
             </label>
             <label className="radio">
-              <input type="radio" name="radio" />
+              <input type="radio" name="radio1" value = "Both Residue & Grains"/>
               <div className="name">Both Residue & Grains</div>
             </label>
           </div>
@@ -141,35 +162,35 @@ const Service = () => {
           <div >
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value = "Harvester" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Harvester</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value = "Machine1" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 1</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value = "Machine2" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 2</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value = "Machine3" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 3</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" />
+              <input  type="checkbox" value = "Machine4" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 4</label>
