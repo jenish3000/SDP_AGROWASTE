@@ -34,17 +34,24 @@ const Service = () => {
     e.preventDefault();
 
     const data1 = document.getElementsByName("radio1");
+    let datatype = null;
     for(let i = 0 ; i < data1.length; i++){
       if(data1[i].checked){
+        datatype = data1[i].value;
         console.log(data1[i].value);
       }
     }
+    console.log(datatype , "is selected");
     const newValue = document.getElementsByClassName('myCheckBox');
+    let arr = [];
     for(let i =0; i< newValue.length; i++){
       if(newValue[i].checked){
+        // arr = [...arr,newValue[i].value];
+        arr = [...arr,newValue[i].value];
         console.log(newValue[i].value);
       }
     }
+    // console.log(arr);
     const date12 = document.getElementById('Date12').value;
     console.log("hello",date12);
 
@@ -53,10 +60,13 @@ const Service = () => {
 
     const date2 = document.getElementById('Date2').value;
     console.log("hello",date2);
+
+    setService({email :service.email,mobileno : service.mobileno,acre : service.acre,ptype : service.ptype,date1 : date12,du1 : date1,du2 : date2,type : datatype, mtype :  arr});
     
+    console.log(service);
     const data = await axios.post('http://localhost:5000/Service', {
       email: service.email,
-      mobileno: service.mobileno,
+      mobileno: service.mobileno, 
       acre: service.acre,
       ptype: service.ptype,
       date1: service.date1,
@@ -72,6 +82,7 @@ const Service = () => {
       navigate('/')
     } else {
       showAlert(data.data.msg, 'danger');
+      // navigate('/');
     }
 
   }
