@@ -20,13 +20,13 @@ const DeepState = (props)=>{
     useEffect(()=>console.log("hello",loggedinA,"Dsafsd",loggedinC,"dsfsd",loggedinF),[alert,loggedinA,loggedinC,loggedinF]);
 const LoginC=(value,state)=>{
   localStorage.setItem("loginC",state);
-  console.log("hiiiii",value,state);
-  setUser(value);
+  // console.log("hiiiii",value,state);
   setLoggedinC(state);
 }
 
 const LoginF = (state) =>{
   localStorage.setItem("loginF",state);
+
   setLoggedinF(state);
 }
 const LoginA = (state)=>{
@@ -50,7 +50,7 @@ const LoginA = (state)=>{
   
 
     return(
-        <DeepContext.Provider value={{showAlert,alert,user,LoginC,loggedinC,LoginA,loggedinA,LoginF,loggedinF}}>
+        <DeepContext.Provider value={{showAlert,alert,user,LoginC,loggedinC,LoginA,loggedinA,LoginF,loggedinF,setUser}}>
                {props.children}
         </DeepContext.Provider>
     )

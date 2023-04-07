@@ -24,7 +24,7 @@ const SignUpCompany = () => {
         email: company.email,
         password: company.password,
       })
-      console.log(data.data);
+      // console.log(data.data);
       if (data.data.success) {
         showAlert(data.data.msg,'success');
         navigate('/LoginCompany')

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+html{
+    font-size: 62.5%;
+}
+
+
+
+.cardforlist1 {
+    width: 45rem;
+    height: 53.4rem;
+    margin: 0rem auto;
+    background-color: #343654;
+    border-radius: 1.8rem;
+    z-index: 1;
+   }
+   
+   .tools1 {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+   }
+   
+   /* .circle {
+    padding: 0 .1rem;   
+   } */
+   
+   .box1 {
+    display: inline-block;
+    align-items: center;
+    width: 1rem;
+    height: 1rem;
+    padding: 1rem;   
+    border-radius: 50%;
+   }
+   
+   .red1 {
+    color: #ff605c;
+    font-size: 1.6rem;
+   }
+
+
+   .card13 {
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .header1 {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .body1 {
+    padding: 20px;
+  }
+  
+  .req1 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .req-name1 {
+    width: 120px;
+    font-size: 16px;
+  }
+  
+  
+  
+  
+  
+  

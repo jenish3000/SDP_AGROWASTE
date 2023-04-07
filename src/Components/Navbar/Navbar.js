@@ -1,4 +1,4 @@
-import React, { useContext,useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import './Navbar.css';
 import Home from '../HomePage/Home';
@@ -8,37 +8,44 @@ import DeepContext from '../../context/DeepContext';
 import OptionLogin from '../OptionPage/OptionLogin';
 import { useNavigate } from 'react-router-dom';
 function Navbar() {
-    const [user, setUser] = useState("");
-    const {loggedinC,LoginC,loggedinF,LoginF,loggedinA,LoginA}=useContext(DeepContext);
+    const [user1, setUser1] = useState("");
+    const { loggedinC, LoginC, loggedinF, LoginF, loggedinA, LoginA, user, setUser } = useContext(DeepContext);
     // const [loggedIn, setLoggedIn] = useState(false);
-
+    useEffect(() => {
+        // console.log("User-->", user);
+    }, [user])
+    useEffect(() => {
+        let u = JSON.parse(localStorage.getItem("userLogin"));
+        u ? setUser(u) : setUser(null)
+    }, [])
     useEffect(() => {
         // axios.get('/')
         //     .then(res => setLoggedIn(res.data.loggedIn))
         //     .catch(err => console.log(err));
-        const user1=localStorage.getItem("user");
+        const user2 = localStorage.getItem("user");
         // console.log(user1);
-        setUser(user1);
-        console.log("hehehehhe",loggedinF , "dfsd",loggedinA,"dfsd",loggedinC);
-    },[loggedinA,loggedinC,loggedinF]);
+        setUser1(user2);
+        // console.log("hehehehhe",loggedinF , "dfsd",loggedinA,"dfsd",loggedinC);
+    }, [loggedinA, loggedinC, loggedinF]);
 
-    const Logout= () => {
+    const Logout = () => {
         // axios.post('/')
         //     .then(() => setLoggedIn(false))
         //     .catch(err => console.log(err));
         // localStorage.setItem("user",'');
-        localStorage.setItem("loginC",false);
-        localStorage.setItem("loginA",false);
-        localStorage.setItem("loginF",false);
+        localStorage.setItem("user", false);
+        localStorage.setItem("loginA", false);
+        localStorage.setItem("loginF", false);
         localStorage.removeItem("user");
         setUser(null);
-        LoginC(null,'false');
+        setUser1(null);
+        LoginC(null, 'false');
         LoginA('false');
         LoginF('false');
         navigate('/')
         // console.log("jenish",user);
     };
-    
+
 
     const navigate = useNavigate();
     const handleSignup = () => {
@@ -49,6 +56,12 @@ function Navbar() {
         navigate('OptionLogin');
         // setIsLoggedIn(true);
     }
+
+    const ProfileFun = () => {
+        navigate('Profile');
+    }
+
+
     return (
         <>
             <div className="navbar-container">
@@ -61,7 +74,13 @@ function Navbar() {
                 <div className="navbar-right">
                     <div className="navbar-options">
                         <span className="navbar-options-btn">
-                            <a href='/'>Home</a>
+                            {loggedinF === 'true' && <a href='/FarmerHome'>Home</a>}
+                            {loggedinC === 'true' && <a href='/CompanyHome'>Home</a>
+                            }
+                            {loggedinA === 'true' && <a href='/AdminHome'>Home</a>
+                            }
+                            {loggedinA === 'false' && loggedinF === 'false' && loggedinC === 'false' && <a href='/'>Home</a>
+                            }
                         </span>
                         <span className="navbar-options-btn">
                             <a href="#about">About</a>
@@ -78,42 +97,27 @@ function Navbar() {
 
                         {/* <button role="button" className="button-name" onClick={handleLogin}>
                             SIGN IN</button> */}
-       {              
-    (loggedinA === 'true')?
-    <>
-    <button role="button" className="button-name" onClick={Logout}>Admin</button>    
-    </>: 
-    <></>
-     }
-        {              
-    (loggedinC === 'true')?
-    <>
-    <button role="button" className="button-name" onClick={Logout}>Company</button>
-    </>: 
-    <></>
-      }
-  {              
-    (loggedinF === 'true')?
-    <>
-    <button role="button" className="button-name" onClick={Logout}>Farmer</button>
-    </>:
-    <></>
-      }
-      {
-        (loggedinA === 'false' && loggedinC === 'false' && loggedinF === 'false')?
-        <>
-    
-    <button role="button" className="button-name" onClick={handleSignup}>
-                            REGISTER</button>
-    <button role="button" className="button-name" onClick={handleLogin}>LogIn</button> 
+                        {
 
-        </>:
-    <button role="button" className="button-name" onClick={Logout}>LogOut</button> 
-      }
-      
+                        }
+                        {
+                            user ?
+                                <>
+                                    <button role="button" className="button-name" onClick={ProfileFun}>{user.name}</button>
+                                    <button role="button" className="button-name" onClick={Logout}>LogOut</button>
+                                </>
+                                :
+                                <>
+
+                                    <button role="button" className="button-name" onClick={handleSignup}>REGISTER</button>
+                                    <button role="button" className="button-name" onClick={handleLogin}>LogIn</button>
+                                </>
+
+                        }
+
 
                     </div>
-                    
+
                 </div>
             </div>
 

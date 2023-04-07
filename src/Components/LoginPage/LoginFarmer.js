@@ -8,24 +8,26 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../context/DeepContext';
 const LoginFarmer = () => {
-  const {showAlert,LoginF}=useContext(DeepContext);
+  const {showAlert,LoginF,user,setUser}=useContext(DeepContext);
   const navigate = useNavigate()
 
-  const [user,setuser] = useState({
+  const [user1,setuser] = useState({
     email:"", password:""
   })
   
   const userlogin = async (e) => {
     e.preventDefault();
     const data = await axios.post('http://localhost:5000/LoginFarmer', {
-      email: user.email,
-      password: user.password
+      email: user1.email,
+      password: user1.password
     })
     console.log(data);
-    if(data.data){
+    if(data.data.success){
       showAlert(data.data.message,'success');
+      setUser(data.data.data)
+      localStorage.setItem("userLogin",JSON.stringify(data.data.data));
       LoginF('true');
-      navigate('/')
+      navigate('/FarmerHome')
     }else{
       showAlert(data.data.message,'danger');
     }
@@ -35,7 +37,7 @@ const LoginFarmer = () => {
   const handleInput = (e) => {
     name = e.target.name;
     value = e.target.value;
-    setuser({...user, [name]:value})
+    setuser({...user1, [name]:value})
     e.preventDefault();
   }
 
@@ -47,12 +49,12 @@ const LoginFarmer = () => {
       <form onSubmit={userlogin} method="post">
         <div className="txt_field">  
 
-          <input type="text" required name='email' value={user.email} onChange={handleInput}/>
-          <label>Username</label>
+          <input type="text" required name='email' value={user1.email} onChange={handleInput}/>
+          <label>mobile number</label>
         </div>
         <div className="txt_field"> 
 
-          <input type="password" required name='password' value={user.password} onChange={handleInput}/>
+          <input type="password" required name='password' value={user1.password} onChange={handleInput}/>
           <label>Password</label>
         </div>
         <div className="pass"><a href="Forget" >Forget Password?</a></div>

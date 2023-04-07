@@ -1,6 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+*{
+  /* margin: 0;
+  padding: 0;
+  box-sizing: border-box; */
+  font-family: "Poppins", sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+html{
+    font-size: 62.5%;
+}
+
+
+
+
 .carousel {
     display: flex;
-    height: 600px;
+    height: 60rem;
     width: 100%;
   }
   
@@ -17,9 +34,9 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border-radius: 20px;
-    -webkit-box-shadow: 0px 0px 11px 3px rgba(0, 0, 0, 0.15);
-    box-shadow: 0px 0px 11px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 2rem;
+    -webkit-box-shadow: 0rem 0rem 1.1rem 0.3rem rgba(0, 0, 0, 0.15);
+    box-shadow:  0rem 0rem 1.1rem 0.3rem rgba(0, 0, 0, 0.15);
     opacity: 0;
     pointer-events: none;
     transform: scale(0.8);
@@ -41,8 +58,8 @@
   }
   
   .card_image img{
-    padding: 5px;
-    border-radius: 5px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
   }
   
   .card_overlay {
@@ -51,54 +68,54 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    padding: 40px 30px;
+    padding: 4rem 3rem;
     align-items: flex-end;
   }
   
   .card_title {
     color: white;
-    font-size: 30px;
+    font-size: 3rem;
   }
   
   .carousel_arrow_left,
   .carousel_arrow_right {
     position: absolute;
-    font-size: 40px;
+    font-size: 4rem;
     top: 50%;
     transform: translate(0, -50%);
     background-color: gainsboro;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-    padding-bottom: 7px;
+    padding-bottom: 0.7rem;
     cursor: pointer;
   }
   
   .carousel_arrow_left {
-    left: 15px;
+    left: 1.5rem;
   }
   
   .carousel_arrow_right {
-    right: 15px;
+    right: 1.5rem;
   }
   
   .carousel_pagination {
     position: absolute;
-    bottom: 5px;
+    bottom: 0.5rem;
     left: 50%;
     transform: translate(-50%, 0);
   }
   
   .pagination_dot {
-    height: 10px;
-    width: 10px;
+    height: 1rem;
+    width: 1rem;
     background-color: #f5f5f5;
     border-radius: 50%;
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 1rem;
     cursor: pointer;
   }
   
@@ -109,3 +126,40 @@
   .pagination_dot-active {
     background-color: steelblue;
   }
+
+  /* @media(min-width:1600px){
+    html{ 
+      font-size: 75%;
+
+    }
+  }
+  @media(max-width:412px){
+    html{ 
+      font-size: 50%;
+
+    }
+  }
+  @media(max-width:350px){
+    html{ 
+      font-size: 45%;
+
+    }
+  }
+  @media(max-width:300px){
+    html{ 
+      font-size: 30%;
+
+    }
+  }
+  @media(max-width:200px){
+    html{ 
+      font-size: 20%;
+
+    }
+  }
+  @media(max-width:140px){
+    html{ 
+      font-size: 10%;
+
+    }
+  } */

@@ -159,8 +159,13 @@ input[type="submit"]:hover{
   transform: translateY(0);
  }
 
-/* 
- @media(min-width:1600px){
+ /* .GG{
+  display:block ;
+  justify-content: center;
+  align-items: center;
+ } */
+
+ /* @media(min-width:1600px){
   html{ 
     font-size: 75%;
 

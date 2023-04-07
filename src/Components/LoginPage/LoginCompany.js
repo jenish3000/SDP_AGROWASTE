@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../context/DeepContext';
 
 const LoginCompany = () => {
-  const {showAlert,LoginC}=useContext(DeepContext);
+  const {showAlert,LoginC,user,setUser}=useContext(DeepContext);
 // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // const handleLogin = () => {
@@ -50,16 +50,18 @@ const LoginCompany = () => {
       password: Company.password
     })
     // console.log("inside company   ,"+data);
-    if(data.data){
+    if(data.data.success){
       showAlert(data.data.message,'success');
       // <submit/>
       // let Cname=data.data.data.name;
       localStorage.setItem("loginC",'true');
+      setUser(data.data.data)
       LoginC(data.data.data.name,'true');
       localStorage.setItem('user',data.data.data.name);
+      localStorage.setItem("userLogin",JSON.stringify(data.data.data));
       // console.log("hi jenish",user);
       // console.log("hiiii",data.data.data.name);
-      navigate('/')
+      navigate('/CompanyHome')
     }else{
       showAlert(data.data.message,'danger');
     }
