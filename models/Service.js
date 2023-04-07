@@ -27,7 +27,7 @@ const ServiceSchema = new mongoose.Schema({
     },
     date1:{
         type:Date,
-        // required:true, 
+        required:true, 
     },
     du1:{
         type:Date,
@@ -42,14 +42,15 @@ const ServiceSchema = new mongoose.Schema({
         min: 2,
       max: 50,
         
-        // required:true
+        required:true
     },
     mtype:{
         type:String,
         min: 2,
       max: 50,
-        // required:true
+        required:true
     }
 });
 
-module.exports =mongoose.model('ServiceInfo',ServiceSchema);
+const service = mongoose.model('ServiceInfo',ServiceSchema);
+module.exports = service;
