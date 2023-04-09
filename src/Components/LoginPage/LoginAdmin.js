@@ -43,7 +43,7 @@ const LoginAdmin = () => {
   return (
     <>
     {/* <Navbar/> */}
-      <div className="center">
+      <div className="centerL">
       <h1>Login For Admin</h1>
       <form method="post">
         <div className="txt_field">  
@@ -53,7 +53,7 @@ const LoginAdmin = () => {
         </div>
         <div className="txt_field"> 
 
-          <input type="password" required name='password' value={Admin.password} onChange={handleInput}/>
+          <input type="password" required name='password' value={Admin.password}  />
           <label>Password</label>
         </div>
         <div className="pass"><a href="Forget" >Forget Password?</a></div>

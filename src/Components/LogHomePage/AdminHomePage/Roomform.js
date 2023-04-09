@@ -46,7 +46,7 @@ const Roomform = () => {
   }
 
   return (
-    <div className='center'>
+    <div className='centerR'>
       <h1>Create a new auction room</h1>
       <form onSubmit={handleSubmit} method="post">
         <div className="txt_field">

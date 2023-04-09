@@ -57,7 +57,7 @@ html{
     transform: translateY(0);
    }
 /* //////// */
-.center{
+.centerA{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -123,7 +123,14 @@ html{
 /* service list css */
 .list-container {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  /* display: flex;
+  justify-content: center; */
+  align-items: center;
+  
+  /* flex-direction: row; */
 }
 
 .list {
@@ -133,9 +140,74 @@ html{
 }
 
 .list li {
-  margin: 1rem;
-  padding: 1rem;
-  border: 0.1rem solid black;
+  margin-bottom: 10px;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px;   */
+}
+
+.list li:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.list li button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.list li button:hover {
+  text-decoration: none;
+}
+/* .list-container{ */
+  /* display: flex;
+} */
+.cardReq {
+  width: 60rem;
+  height: 20rem;
+  border-radius: 4px;
+  background: #212121;
+  display: flex;
+  gap: 5px;
+  padding: .4em;
+}
+
+
+.cardReq button {
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all .5s;
+  background: #212121;
+  border: 1px solid #ff5a91;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardReq button:hover {
+  flex: 4;
+}
+
+.cardReq button li {
+  /* min-width: 14em; */
+  padding: .5rem;
+  text-align: center;
+  transform: rotate(-90deg);
+  transition: all .5s;
+  text-transform: uppercase;
+  color: #ff568e;
+  letter-spacing: .1em;
+}
+
+.cardReq button:hover li {
+  transform: rotate(0);
 }
 
    /* @media(min-width:1600px){

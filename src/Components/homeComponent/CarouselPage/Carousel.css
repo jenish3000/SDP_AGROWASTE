@@ -68,7 +68,7 @@ html{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    padding: 4rem 3rem;
+    padding: 0rem 3rem;
     align-items: flex-end;
   }
   

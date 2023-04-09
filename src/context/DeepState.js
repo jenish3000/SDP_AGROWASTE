@@ -13,7 +13,7 @@ const DeepState = (props)=>{
     const [loggedinC, setLoggedinC] = useState(loginC);
     const [loggedinF, setLoggedinF] = useState(loginF);
     const [loggedinA, setLoggedinA] = useState(loginA);
-    
+    const [EndObject,setEndObject]=useState("");
     const navigate = useNavigate();
  
     // const BaseUrl = 'http://localhost:5000'
@@ -34,6 +34,10 @@ const LoginA = (state)=>{
   setLoggedinA(state);
 }
 
+const FullfillRequest=(element)=>{
+  setEndObject(element)
+}
+
   {  const showAlert=(message,type)=>{
     setalert({
       msg:message,
@@ -50,7 +54,7 @@ const LoginA = (state)=>{
   
 
     return(
-        <DeepContext.Provider value={{showAlert,alert,user,LoginC,loggedinC,LoginA,loggedinA,LoginF,loggedinF,setUser}}>
+        <DeepContext.Provider value={{showAlert,alert,user,LoginC,loggedinC,LoginA,loggedinA,LoginF,loggedinF,setUser,EndObject,FullfillRequest}}>
                {props.children}
         </DeepContext.Provider>
     )

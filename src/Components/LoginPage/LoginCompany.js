@@ -78,7 +78,7 @@ const LoginCompany = () => {
   return (
     <>
     {/* <Navbar/> */}
-      <div className="center">
+      <div className="centerL">
       <h1>Login For Company</h1>
       <form  onSubmit={Companylogin} method="post">
         <div className="txt_field">  

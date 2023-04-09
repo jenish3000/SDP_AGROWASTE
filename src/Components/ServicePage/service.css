@@ -13,10 +13,9 @@ html{
     font-size: 62.5%;
 }
 
-.center{
+.center1{
   position: absolute;
-  top:50rem;
-  width: 45rem;
+
   left: 50%;
   transform: translate(-50%, -50%);
   /* width: 40rem; */
@@ -24,17 +23,18 @@ html{
   border-radius: 2rem;
   box-shadow: 1rem 1rem 1.5rem rgba(0,0,0,0.05);
 }
-/* .JB{
- 
-} */
-.center h1{
+#JB{
+  top:63rem;
+  width: 55rem;
+}
+.center1 h1{
   text-align: center;
   padding: 2rem 0rem;
   border-bottom: 0.1rem solid rgb(90, 180, 210);
   background-color: #1a4664;
   color: aliceblue;
 }
-.center form{
+.center1 form{
   padding: 0rem 4rem;
   box-sizing: border-box;
 }
@@ -114,7 +114,7 @@ input[type="submit"]:hover{
 } */
   /* spaceee*/
   .space{
-    margin: 17rem;
+    margin: 8rem;
 }
 
 

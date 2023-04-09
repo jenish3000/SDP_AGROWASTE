@@ -19,29 +19,41 @@ const Service = () => {
     email: "", mobileno: "", acre: "", ptype: "", date1: "", du1: "", du2: "", type: "", mtype: ""
   })
 
-  // const dateValidate = () => {
-  //   if (service.du1 > service.du2) {
-  //     console.log("Start > end");
-  //     // console.log(service.du1.valueAsNumber);
-  //     // console.log(service.du2.valueAsNumber);
-  //   } 
-  //   // else {  
-  //     // console.log("Ok");
-  //     // console.log(service.du1.valueAsNumber);
-  //     // console.log(service.du2.valueAsNumber);
-  //   // }
-  // };
+  const dateValidate = () => {
+    if (service.du1 > service.du2) {
+      console.log("Start > end");
+      // console.log(service.du1.valueAsNumber);
+      // console.log(service.du2.valueAsNumber);
+    } else {  
+      // console.log("Ok");
+      // console.log(service.du1.valueAsNumber);
+      // console.log(service.du2.valueAsNumber);
+    }
+  };
   const Servicefun = async (e) => {
     e.preventDefault();
-    const ele=document.getElementById("myRadio").value;
-    let i;
-    for(i = 0;i < ele.length;i++){
-      // if(ele[i].checked)
-      console.log("element",ele[i].value);
-      // document.getElementById("result").innerHTML
-      //         = "choice: "+ele[i].value;
-  }
-    // console.log("radio1 value",radio1);
+
+    const data1 = document.getElementsByName("radio1");
+    for(let i = 0 ; i < data1.length; i++){
+      if(data1[i].checked){
+        console.log(data1[i].value);
+      }
+    }
+    const newValue = document.getElementsByClassName('myCheckBox');
+    for(let i =0; i< newValue.length; i++){
+      if(newValue[i].checked){
+        console.log(newValue[i].value);
+      }
+    }
+    const date12 = document.getElementById('Date12').value;
+    console.log("hello",date12);
+
+    const date1 = document.getElementById('Date1').value;
+    console.log("hello",date1);
+
+    const date2 = document.getElementById('Date2').value;
+    console.log("hello",date2);
+    
     const data = await axios.post('http://localhost:5000/Service', {
       email: service.email,
       mobileno: service.mobileno,
@@ -54,10 +66,10 @@ const Service = () => {
       mtype: service.mtype,
 
     })
-    console.log("data of service :::",data.data);
+    console.log(data.data);
     if (data.data.success) {
       showAlert(data.data.msg, 'success');
-      navigate('/SuccessPage')
+      navigate('/')
     } else {
       showAlert(data.data.msg, 'danger');
     }
@@ -80,9 +92,9 @@ const Service = () => {
       </Navbar> */}
       {/* <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta> */}
       {/* <div className="space"></div> */}
-      <div className="center JB">
+      <div id='JB' className="center1">
         <h1>Details</h1>
-        <form id="myForm" onSubmit={Servicefun} method="POST">
+        <form onSubmit={Servicefun} method="POST" id="myForm">
           <div className="txt_field">
             <input type="text" required name='email' value={service.email} onChange={handleInput} />
 
@@ -106,7 +118,7 @@ const Service = () => {
           <span></span>
           <div className="txt_field">
 
-            <input type="date" id="Date1" name="date1" value={service.date1} onChange={handleInput} />
+            <input type="date" id="Date12" name="date1" value={service.date1} onChange={handleInput} />
             <label >When did you plant that crop?</label>
             {/* <span></span> */}
           </div>
@@ -131,17 +143,16 @@ const Service = () => {
           </div>
           <div className="radio-inputs jb1">
             <label className="radio">
-              <input type="radio" id="myRadio" name="radio" value={service.type} />
+              <input type="radio" name="radio1" value ="Only Residue"/>
               <div className="name">Only Residue</div>
 
             </label>
             <label className="radio">
-              <input type="radio" id="myRadio" name="radio" value={service.type} />
+              <input type="radio" name="radio1" value = "Both Residue & Grains"/>
               <div className="name">Both Residue & Grains</div>
             </label>
           </div>
-{/* kar have  ubhi re join tham
-*/}
+
 
           <div className='jb' >
 
@@ -151,35 +162,35 @@ const Service = () => {
           <div >
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value={service.mtype}  />
+              <input  type="checkbox" value = "Harvester" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Harvester</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value={service.mtype}  />
+              <input  type="checkbox" value = "Machine1" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 1</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value={service.mtype}   />
+              <input  type="checkbox" value = "Machine2" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 2</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value={service.mtype}  />
+              <input  type="checkbox" value = "Machine3" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 3</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value={service.mtype}   />
+              <input  type="checkbox" value = "Machine4" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
             <label className='jb3'>Machine 4</label>
@@ -197,6 +208,9 @@ const Service = () => {
             <input type="submit" value="Request" />
           </div>
         </form>
+        
+      <div className="space"></div>
+        </div>
         {/* <div className="space"></div> */}
 
         {/* <form>
@@ -245,10 +259,9 @@ const Service = () => {
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form> */}
-      </div>
-      <div className="space"></div>
+
     </>
   )
 }
 
-export default Service
+export default Service

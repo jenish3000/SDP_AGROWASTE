@@ -44,7 +44,7 @@ const LoginFarmer = () => {
   return (
     <>
     {/* <Navbar/> */}
-      <div className="center">
+      <div className="centerL">
       <h1>Login for Farmer</h1>
       <form onSubmit={userlogin} method="post">
         <div className="txt_field">  

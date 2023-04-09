@@ -3,8 +3,9 @@ import './ShowAuction.css';
 import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../../../context/DeepContext';
 import axios from 'axios';
-const ListContainer = ({ data }) => {
-  const {showAlert}=useContext(DeepContext);
+const ListContainer = () => {
+  const {showAlert,EndObject}=useContext(DeepContext);
+  const data= EndObject;
     const navigate = useNavigate()
     const handleBack=()=>{
             navigate('/AdminHome')

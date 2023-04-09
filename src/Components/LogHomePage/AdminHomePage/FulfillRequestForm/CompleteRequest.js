@@ -3,12 +3,17 @@ import './CompleteRequest.css';
 import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../../../context/DeepContext';
 import axios from 'axios';
-const ListContainer = ({ data }) => {
+const ListContainer = () => {
   
-  const {showAlert}=useContext(DeepContext);
+  const {showAlert,EndObject}=useContext(DeepContext);
+  console.log(EndObject);
+  const data=EndObject;
     const navigate = useNavigate()
     const handleBack=()=>{
             navigate('/AdminHome')
+    }
+    const handleRequest=()=>{
+      navigate('ClearReqForm');
     }
   //   const [service, setService] = useState();
   //   const getData = async () => {
@@ -38,7 +43,7 @@ const ListContainer = ({ data }) => {
         <button onClick={handleBack}><span class="red box">Back</span></button>
       </div>
     </div>
-    <div class="card__content">
+    {/* <div class="card__content"> */}
       {/*   <div className="oneline"> <h2>Email: {service.email}</h2></div> */}
       {/* <div className="oneline"><p>Mobile No: {service.mobileno}</p></div>
       <div className="oneline"><p>Acre: {service.acre}</p></div>
@@ -54,7 +59,8 @@ const ListContainer = ({ data }) => {
       <div className="oneline">
       <p>MType: {service.mtype}</p>
       </div>
-    */}<div class="card14">
+    */}
+    {/* <div class="card14"> */}
   <div class="header2">{data.email}</div>
   <div class="body2">
     <div class="req">
@@ -89,8 +95,12 @@ const ListContainer = ({ data }) => {
       <div class="req-name"><p>Machines Required: {data.mtype}</p></div>
       
     </div>
-  </div>
-</div>
+    <div className="req">
+    <button className='Fulfill' onClick={handleRequest}> Fullfill Request
+</button>
+    </div>
+  {/* </div> */}
+{/* </div> */}
 
         
         

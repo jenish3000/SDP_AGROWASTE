@@ -175,15 +175,21 @@ function Auction(props) {
     <>
    
     <div className="container mx-2">
-        <h1>Enter Code</h1>
+      <div className="formBox">
+     
         <form onSubmit={SubmitCode}>
+        <h2>
+         <label>Enter Code</label> </h2>
     <input
         type="number"
         value={Code}
         onChange={(event) => setCode(event.target.value)}
       />
-      <button type="submit">Submit</button> 
+      <button type="submit" className='subcen'>Submit</button> 
+
     </form>
+      </div>
+        
     <div className="row">
       <div className="col-md-8 offset-md-2">
         <h1 className="text-center">Auction</h1>
@@ -198,7 +204,7 @@ function Auction(props) {
           <div className="input-group">
             <input type="number"  value ={amount} onChange={(event) => setAmount(event.target.value)}  className="form-control" placeholder="Type your message..."/>
             <div className="input-group-append">
-              <button type="submit" className="btn btn-primary">Send</button>
+              <button type="submit" className="btn btn-primary ">Send</button>
             </div>
           </div>
         </div>

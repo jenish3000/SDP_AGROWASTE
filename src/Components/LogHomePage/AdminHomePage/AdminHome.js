@@ -9,7 +9,7 @@ import CompleteRequest from './FulfillRequestForm/CompleteRequest'
 import DeepContext from '../../../context/DeepContext';
 const AdminHome = () => {
 
-  const {showAlert}=useContext(DeepContext);
+  const {showAlert,EndObject,FullfillRequest}=useContext(DeepContext);
 
   const navigate = useNavigate()
 
@@ -39,55 +39,67 @@ const AdminHome = () => {
     console.log("Room->", room)
     console.log("Service->", service)
   }, [room || service])
-const handleDeleteRequest=()=>{
+const handleDeleteRequest=(ele)=>{
+  // console.log()
   // localStorage.setItem("request",request);
+{/* <CompleteRequest /> */}
+FullfillRequest(ele);
+
   navigate('/CompleteRequest');
+  // navigate('/CompleteRequest');
   
 }
-const handleAuctionResult=()=>{
+const handleAuctionResult=(ele)=>{
+  FullfillRequest(ele);
   navigate('/ShowAuction');
 
 }
 let request;
   return (
     <>
-    <div className="center">
+    {/* <div className="centerA"> */}
       {/* <div className="center"> */}
       <div className="list-container">
-      <ul className="list">
+        {/* <div className="heading"> */}
+         <label className='list-container'> <h2>Available Room's :</h2>
+        {/* </div> */}
+      <ul className="list d-flex flex-row cardReq">
         {
           room ?
 
             room.map((ele) => {
               // request=ele;
-              // return <ShowAuction data={ele}/>
-              // return <button onClick={handleDeleteRequest}><li>{ele.Name}</li></button>
+              // return <li className='p-2'><ShowAuction data={ele}/></li>
+              return <button onClick={()=>{handleAuctionResult(ele)}}><li>{ele.Name}</li></button>
             })
 
             :<></>
         }
        </ul>
-    {/* </div> */}
+       </label>
     </div>
-    {/* <div className="center"> */}
-      <div className="list-container">
-      <ul className="list">
+    {/* </div> */}
+    <div className="center">
+    <label className='list-container'> <h2>Pending Services :</h2>
+      {/* <div className="list-container"> */}
+      <ul className="list d-flex flex-row cardReq ">
         {
           service ?
 
             service.map((ele => {
-              // return <CompleteRequest data={ele}/>
-              // return <button onClick={handleAuctionResult}><li>{ele.email}</li></button>
+              // return <li><CompleteRequest data={ele}/></li>
+              return <button onClick={()=>{handleDeleteRequest(ele)}}><li>{ele.email}</li></button>
             }))
 
             :<></>
         }
        </ul>
-       </div>
+       </label>
        {/* </div> */}
+        </div>
 
         <button className='CreateRoom' onClick={showForm}>CreateRoom</button>
-        </div>
+        {/* </div> */}
     </>
   );
 }
