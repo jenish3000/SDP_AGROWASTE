@@ -18,9 +18,9 @@ html{
     align-content: center;
    
     height: inherit;
-    width: 133rem;
+    width: 100%;
     height: 65rem;
-    margin:2rem  1rem;
+    margin:1rem  1rem;
     object-fit: cover;
   }
 
@@ -83,7 +83,7 @@ html{
     /* overflow:scroll ; */
     display: flex;
     border: .2rem solid black;
-    width: 135rem;
+    width: 100%;
     background-color: rgb(235, 235, 220);
     /* margin-top: 100px; */
     padding: 5rem;

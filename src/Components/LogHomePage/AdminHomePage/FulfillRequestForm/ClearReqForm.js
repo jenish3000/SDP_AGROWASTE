@@ -13,7 +13,7 @@ const ClearReqForm=()=>{
     
     const ClearRequest = async (e) => {
       e.preventDefault();
-      const data = await axios.post('http://localhost:5000/ClearRequest', {
+      const data = await axios.post('http://localhost:5000/ClearReqForm', {
         tResidue: ClearedList.tResidue,
         tgrain: ClearedList.tgrain,
         sdate: ClearedList.sdate
@@ -21,7 +21,7 @@ const ClearReqForm=()=>{
     //   if( LoginA){
       if(data.data.success){
         showAlert(data.data.message,'success');
-        setClearedList(data.data.data)
+        setClearedList(data.data.data);
         
         localStorage.setItem("userLogin",JSON.stringify(data.data.data));
        
@@ -47,7 +47,7 @@ const ClearReqForm=()=>{
       <form className='card12'  method="POST">
         <div class="card-header12">
         <label>Total Residue collected :
-          <input type="text" name="tresidue" value={ClearedList.tResidue}  required onChange={handleInput}/>
+          <input type="text" required name="tResidue" value={ClearedList.tResidue}   onChange={handleInput}/>
           </label>
         </div>
         <div class="card-header12">
@@ -55,10 +55,10 @@ const ClearReqForm=()=>{
           <input type="text" name="tgrain" required value={ClearedList.tgrain} onChange={handleInput}/>
           </label>
          
-        </div> 
+        </div>  
         <div class="card-header12">
         <label>FullFill Date
-            <input type="date" name="sdate" value={ClearedList.sdate} onChange={handleInput}/>
+            <input type="date" required name="sdate" value={ClearedList.sdate} onChange={handleInput}/>
             </label>
           </div>
        

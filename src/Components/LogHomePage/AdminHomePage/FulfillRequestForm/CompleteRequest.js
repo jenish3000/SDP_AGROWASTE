@@ -6,7 +6,7 @@ import axios from 'axios';
 const ListContainer = () => {
 
   const { showAlert, EndObject } = useContext(DeepContext);
-  console.log(EndObject);
+  // console.log(EndObject);
   const data = EndObject;
   const navigate = useNavigate()
   const handleBack = () => {
