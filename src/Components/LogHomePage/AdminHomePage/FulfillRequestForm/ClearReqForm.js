@@ -2,6 +2,7 @@ import React, { useContext,useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../../../context/DeepContext';
+import './ClearReqForm.css'
 const ClearReqForm=()=>{
     const {showAlert,LoginA,user,setUser}=useContext(DeepContext);
     const navigate = useNavigate()
@@ -41,8 +42,8 @@ const ClearReqForm=()=>{
   return (
     <>
       
-    <div class="container12 jb">
-      <h1>Service Submission </h1>
+    <div class="containerC">
+      <h1 id='headq' className='headq'>Service Submission </h1>
       <form className='card12'  method="POST">
         <div class="card-header12">
         <label>Total Residue collected :

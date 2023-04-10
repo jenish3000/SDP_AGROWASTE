@@ -3,8 +3,8 @@ import React, { useEffect, useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import './AdminHome.css';
 import axios from 'axios';
-import ShowAuction from './ShowAuctionDetails/ShowAuction';
-import CompleteRequest from './FulfillRequestForm/CompleteRequest'
+// import ShowAuction from './ShowAuctionDetails/ShowAuction';
+// import CompleteRequest from './FulfillRequestForm/CompleteRequest'
 // import Carousel2 from './Carousel2';
 import DeepContext from '../../../context/DeepContext';
 const AdminHome = () => {
@@ -23,9 +23,9 @@ const AdminHome = () => {
   const getData = async () => {
     const data = await axios.post("http://localhost:5000/AdminHome")
 
-    if (data?.data?.room && data?.data?.service) {
+    if (data?.data?.room && data?.data?.service1) {
       setRoom(data?.data?.room);
-      setService(data?.data?.service);
+      setService(data?.data?.service1);
     } else {
       alert(data?.data?.message);
     }
