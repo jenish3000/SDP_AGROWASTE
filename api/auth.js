@@ -7,6 +7,7 @@ const auth = require('../middleware/auth')
 const config = require('config');
 const User = require('../models/User');
 const service =require('../models/Service');
+const ClearedList=require('../models/ClearedList');
 // const service = require('../models/Service')
 const Admin = require('../models/Admin')
 const { encryption } = require('../middleware/hasing')
@@ -326,13 +327,13 @@ router.get('/Service',(req,res)=>{
 router.post('/Service', async(req, res) => {
     const { email } = req.body;
     const date = new Date(req.body.du1);
-    console.log("from service",req.body.email,date);
+    // console.log("from service",req.body.email,date);
     try {
-        console.log("service req body",req.body);
+        // console.log("service req body",req.body);
         // const user = await User.findOne({ email: req.body.email });
         // console.log(user);
         const EmailExist = await service.findOne({ email: req.body.email });
-        console.log(EmailExist);
+        // console.log(EmailExist);
         // if (user) {
             if (EmailExist) return res.status(200).send({success : false,msg : "Already Requested!!!"});
             else {
@@ -348,7 +349,7 @@ router.post('/Service', async(req, res) => {
                     mtype: JSON.stringify(req.body.mtype),
                     // userType: req.body.type
                 });
-                console.log("Printed", newSer);
+                // console.log("Printed", newSer);
 
                 if (newSer) {
                     res.json({ success: true, msg: "successfully requested for harvesting." })
@@ -405,6 +406,42 @@ router.post('/CreateRoom', async (req, res) => {
 
 }
 });
+router.post('/ClearRequest', async (req, res) => {
+    try {
+        // console.log("service req body",req.body);
+        // const user = await Admin.findOne({email:req.body.email });
+        const ReqExist = await service.findOne({ email: req.body.email });
+        // console.log(user);
+        // if(user){
+        if (!ReqExist) return res.status(200).send("No such request exists!!!");
+        else {
+            
+            const ClearList = await ClearedList.create({
+                tResidue: req.body.tResidue,
+        tgrain: req.body.tgrain,
+        sdate: req.body.sdate
+
+                // userType: req.body.type
+            });
+            // console.log("Printed",newSer);
+            if (ClearList) {
+                res.json({ success: true, msg: "Request is successfully removed from Pending Requests && added to ClearedList.." })
+            }
+            else {
+                res.status(401).json({ success: false, msg: "Request is still in pendingList." })
+            }
+            // newCom.save().then((result) => {
+            //     console.log("Saved");
+            //     res.redirect('/');
+            // }).catch(err => res.status(300).send(err));
+        }
+    
+}catch (err) {
+    console.error(err.message)
+    res.status(500).send('Server Error');
+
+}
+});
 
 
 
@@ -414,8 +451,8 @@ router.post("/AdminHome",async(req,res)=>{
         const room = await RoomModel.find({});
         const service1 = await service.find({});
 
-        console.log("mom",room);
-        console.log("mom",service1);
+        // console.log("mom",room);
+        // console.log("mom",service1);
         if(room && service1){
             res.status(200).send({room,service1});
         }

@@ -2,16 +2,15 @@ const mongoose = require('mongoose');
 
 const ClearedList = mongoose.Schema({
      tResidue:{
-        type : text,
+        type : String,
         required:true,
     },
     tgrain : {
-        type : text,
+        type : String,
         required : true,
-         
     },
     sdate :{
-        type : date,
+        type : Date,
         required : true,
     }
 });
