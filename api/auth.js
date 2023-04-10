@@ -5,7 +5,8 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth')
 const config = require('config');
-const User = require('../models/User')
+const User = require('../models/User');
+const service =require('../models/Service');
 // const service = require('../models/Service')
 const Admin = require('../models/Admin')
 const { encryption } = require('../middleware/hasing')
@@ -15,7 +16,8 @@ const { check, validationResult } = require('express-validator/check');
 const { response } = require('express');
 const Company = require('../models/Company');
 const RoomModel = require('../models/AuctionRoom');
-const Service = require('../models/Service');
+// const service = require('../models/Service');
+const c = require('config');
 // const { default: Service } = require('../../src/Components/ServicePage/Service');
 // router.get('/get',(req,res)=>{res.send("server is running")});
 router.get('/', auth, async (req, res) => {
@@ -307,7 +309,7 @@ router.post("/LoginAdmin", async (req, res) => {
                 type: "Admin",
                 name: admin.name,
                 success: true,
-                message: `Hello ${Admin.name}, You Logged in successfully!`,
+                message: `Hello ${admin.name}, You Logged in successfully!`,
                 
             });
 
@@ -317,43 +319,49 @@ router.post("/LoginAdmin", async (req, res) => {
         res.status(202).send({ success: false, message: "Error! : *** userNotfound ***" });
     }
 });
-router.post('/Service', async (req, res) => {
 
+router.get('/Service',(req,res)=>{
+    res.send("mast plan h");
+});
+router.post('/Service', async(req, res) => {
+    const { email } = req.body;
+    const date = new Date(req.body.du1);
+    console.log("from service",req.body.email,date);
     try {
-        // console.log("service req body",req.body);
-        const { email, password } = req.body;
-        const user = await User.findOne({ email: req.body.email });
+        console.log("service req body",req.body);
+        // const user = await User.findOne({ email: req.body.email });
+        // console.log(user);
         const EmailExist = await service.findOne({ email: req.body.email });
-        if (user) {
-            if (EmailExist) return res.status(200).send("Already Requested!!!");
+        console.log(EmailExist);
+        // if (user) {
+            if (EmailExist) return res.status(200).send({success : false,msg : "Already Requested!!!"});
             else {
                 const newSer = await service.create({
                     email: req.body.email,
                     mobileno: req.body.mobileno,
                     acre: req.body.acre,
                     ptype: req.body.ptype,
-                    date: req.body.date,
-                    du1: req.body.du1,
-                    du2: req.body.du2,
+                    date1: new Date(req.body.date1),
+                    du1: new Date(req.body.du1),
+                    du2: new Date(req.body.du2),
                     type: req.body.type,
-                    mtype: req.body.mtype,
+                    mtype: JSON.stringify(req.body.mtype),
                     // userType: req.body.type
                 });
                 console.log("Printed", newSer);
+
                 if (newSer) {
                     res.json({ success: true, msg: "successfully requested for harvesting." })
                 }
                 else {
                     res.status(401).json({ success: false, msg: "Request is not accepted." })
                 }
-                // newCom.save().then((result) => {
-                //     console.log("Saved");
-                //     res.redirect('/');
-                // }).catch(err => res.status(300).send(err));
+
             }
-        } else {
-            res.status(401).json({ success: false, msg: "you must be a farmer to make request for service!!" })
-        }
+        // } else {
+            // res.status(401).json({ success: false, msg: "you must be a farmer to make request for service!!" })
+        // }
+        
     } catch (err) {
         console.error(err.message)
         res.status(500).send('Server Error');
@@ -404,11 +412,12 @@ router.post("/AdminHome",async(req,res)=>{
     try{
 
         const room = await RoomModel.find({});
-        const service = await Service.find({});
+        const service1 = await service.find({});
 
-
-        if(room && service){
-            res.status(200).send({room,service});
+        console.log("mom",room);
+        console.log("mom",service1);
+        if(room && service1){
+            res.status(200).send({room,service1});
         }
         else{
             res.status(202).send({message:"Not Found!"});
