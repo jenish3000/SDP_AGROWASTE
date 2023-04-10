@@ -53,7 +53,7 @@ const LoginAdmin = () => {
         </div>
         <div className="txt_field"> 
 
-          <input type="password" required name='password' value={Admin.password}  />
+          <input type="password" required name='password' value={Admin.password} onChange={handleInput}/>
           <label>Password</label>
         </div>
         <div className="pass"><a href="Forget" >Forget Password?</a></div>

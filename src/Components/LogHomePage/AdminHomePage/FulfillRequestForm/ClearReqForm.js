@@ -46,18 +46,18 @@ const ClearReqForm=()=>{
       <form className='card12'  method="POST">
         <div class="card-header12">
         <label>Total Residue collected :
-          <input type="text" name="tresidue"  required onChange={handleInput}/>
+          <input type="text" name="tresidue" value={ClearedList.tResidue}  required onChange={handleInput}/>
           </label>
         </div>
         <div class="card-header12">
         <label>Total Grains
-          <input type="text" name="tgrain" required onChange={handleInput}/>
+          <input type="text" name="tgrain" required value={ClearedList.tgrain} onChange={handleInput}/>
           </label>
          
         </div> 
         <div class="card-header12">
         <label>FullFill Date
-            <input type="date" name="sdate"  onChange={handleInput}/>
+            <input type="date" name="sdate" value={ClearedList.sdate} onChange={handleInput}/>
             </label>
           </div>
        
