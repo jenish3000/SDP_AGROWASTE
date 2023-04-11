@@ -22,7 +22,7 @@ const RoomSchema = mongoose.Schema({
         max:8,
     },
     StartBid :{
-        type : String,
+        type : Number,
         required : true,
         // unique : true,
         // min:4,
