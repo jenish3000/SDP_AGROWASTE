@@ -10,6 +10,9 @@ const ListContainer = () => {
     const handleBack=()=>{
             navigate('/AdminHome')
     }
+    // const handleRequest=()=>{
+    //   navigate('')
+    // }
     // const [service, setService] = useState();
 //     const getData = async () => {
 //       const request=localStorage.getItem("request");
@@ -38,7 +41,7 @@ const ListContainer = () => {
         <button onClick={handleBack}><span class="red1 box1">Back</span></button>
       </div>
     </div>
-    <div class="card__content1">
+    {/* <div class="card__content1"> */}
       {/*   <div className="oneline"> <h2>Email: {service.email}</h2></div> */}
       {/* <div className="oneline"><p>Mobile No: {service.mobileno}</p></div>
       <div className="oneline"><p>Acre: {service.acre}</p></div>
@@ -54,7 +57,8 @@ const ListContainer = () => {
       <div className="oneline">
       <p>MType: {service.mtype}</p>
       </div>
-    */}<div class="card13">
+    */}
+    {/* <div class="card13"> */}
   <div class="header1">{data.Name}</div>
   <div class="body1">
     <div class="req1">
@@ -75,8 +79,8 @@ const ListContainer = () => {
     </div>    
     </div>
   </div>
-    </div>
-  </div>
+    {/* </div> */}  
+  {/* </div> */}
   </>
   );
 };

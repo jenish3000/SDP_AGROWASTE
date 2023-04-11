@@ -53,7 +53,7 @@ html{
     width: 30rem;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 1rem;
     overflow: hidden;
   }
   
@@ -62,17 +62,17 @@ html{
     /* color: #fff; */
     /* padding: 20px; */
     text-align: center;
-    font-size: 18px;
+    font-size: 1.8rem;
   }
   
   .body2 {
-    padding: 20px;
+    padding: 2rem;
   }
   
   .req {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
   
   .req-name {

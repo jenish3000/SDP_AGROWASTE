@@ -6,7 +6,7 @@ import './ClearReqForm.css'
 const ClearReqForm=()=>{
     const {showAlert,LoginA,user,setUser}=useContext(DeepContext);
     const navigate = useNavigate()
-  
+    // const data1 = EndObject;
     const [ClearedList,setClearedList] = useState({
       tResidue:"",tgrain:"",sdate:""
     })
@@ -14,17 +14,17 @@ const ClearReqForm=()=>{
     const ClearRequest = async (e) => {
       e.preventDefault();
       const data = await axios.post('http://localhost:5000/ClearReqForm', {
+       
         tResidue: ClearedList.tResidue,
         tgrain: ClearedList.tgrain,
         sdate: ClearedList.sdate
-      })
+      });
     //   if( LoginA){
+      console.log("front hehe",data.data);
       if(data.data.success){
         showAlert(data.data.message,'success');
         setClearedList(data.data.data);
-        
-        localStorage.setItem("userLogin",JSON.stringify(data.data.data));
-       
+        // localStorage.setItem("userLogin",JSON.stringify(data.data.data));
         navigate('/AdminHome')
       }else{
         showAlert(data.data.message,'danger');
