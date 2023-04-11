@@ -406,16 +406,17 @@ router.post('/CreateRoom', async (req, res) => {
 
 }
 });
-router.post('/ClearRequest', async (req, res) => {
+router.post('/ClearReqForm', async (req, res) => {
     try {
-        // console.log("service req body",req.body);
+        console.log("service req body",req.body);
         // const user = await Admin.findOne({email:req.body.email });
+        
         const ReqExist = await service.findOne({ email: req.body.email });
         // console.log(user);
         // if(user){
         if (!ReqExist) return res.status(200).send("No such request exists!!!");
         else {
-            
+
             const ClearList = await ClearedList.create({
                 tResidue: req.body.tResidue,
         tgrain: req.body.tgrain,
