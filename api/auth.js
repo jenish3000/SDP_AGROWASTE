@@ -7,6 +7,7 @@ const auth = require('../middleware/auth')
 const config = require('config');
 const User = require('../models/User');
 const service =require('../models/Service');
+const AuctionModel=require('../models/Auction');
 const ClearedList=require('../models/ClearedList');
 // const service = require('../models/Service')
 const Admin = require('../models/Admin')
@@ -380,6 +381,11 @@ router.post('/CreateRoom', async (req, res) => {
             });
             // console.log("Printed",newSer);
             if (createRoom) {
+                let data = await AuctionModel.create({
+                    Bid : req.body.StartBid,
+                    Room : req.body.Code,
+                    User : "Admin"
+                })
                 res.json({ success: true, msg: "successfully Created Room for the Auction.." })
             }
             else {
