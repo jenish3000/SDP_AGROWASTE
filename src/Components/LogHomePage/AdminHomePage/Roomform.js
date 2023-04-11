@@ -13,10 +13,8 @@ const Roomform = () => {
   const navigate = useNavigate()
 
   const [Room, setRoom] = useState({
-    Name: "", description: "", Code: "", startDate: "", endDate: ""
+    Name: "", description: "", Code: "",StartBid:"", startDate: "", endDate: ""
   })
-
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,10 +23,11 @@ const Roomform = () => {
       Name: Room.Name,
       description: Room.description,
       Code: Room.Code,
+      StartBid:Room.StartBid,
       startDate: Room.startDate,
       endDate: Room.endDate
     })
-    console.log("deep", data);
+    // console.log("deep", data);
     if (data.data.success) {
       showAlert(data.data.msg, 'success');
       navigate('/AdminHome')
@@ -65,21 +64,24 @@ const Roomform = () => {
           <input type="text" name='Code' value={Room.Code} onChange={handleInput} />
           <label>
             Unique Code:
-
+          </label>
+        </div>
+        <div className="txt_field">
+          <input type="text" name='StartBid' value={Room.StartBid} onChange={handleInput} />
+          <label>
+            Starting Bid:
           </label>
         </div>
         <div className="txt_field">
           <input type="datetime-local" name='startDate' value={Room.startDate} onChange={handleInput} />
           <label>
             Start Date:
-
           </label>
         </div>
         <div className="txt_field">
           <input type="datetime-local" name='endDate' value={Room.endDate} onChange={handleInput} />
           <label>
             End Date:
-
           </label>
         </div>
        
