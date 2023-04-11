@@ -382,6 +382,7 @@ router.post('/CreateRoom', async (req, res) => {
                 Name: req.body.Name,
                 description: req.body.description,
                 Code: req.body.Code,
+                StartBid: req.body.StartBid,
                 startDate: req.body.startDate,
                 endDate: req.body.endDate,
 
