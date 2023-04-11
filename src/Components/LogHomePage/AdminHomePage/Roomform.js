@@ -67,7 +67,7 @@ const Roomform = () => {
           </label>
         </div>
         <div className="txt_field">
-          <input type="text" name='StartBid' value={Room.StartBid} onChange={handleInput} />
+          <input type="Number" name='StartBid' value={Room.StartBid} onChange={handleInput} />
           <label>
             Starting Bid:
           </label>
