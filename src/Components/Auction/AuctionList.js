@@ -33,8 +33,7 @@ function AuctionList(props) {
       {bids.map((bid,idx) => (
         
         <>
-        {1&&
-        // <li style={{listStyle : "none"}}>
+        
         <div className="chat-message" key={idx}>
         {/* <div className="float-right" > */}
           <div className={bid.User===user?'float-right':'float-left'}>
@@ -45,8 +44,6 @@ function AuctionList(props) {
           <span className="timestamp">12:35 PM</span>
         </div>
         </div>
-        // </li>
-        }
         </>
       ))}
     </ul>

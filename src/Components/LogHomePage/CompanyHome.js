@@ -5,10 +5,16 @@ import Aboutus from '../homeComponent/AboutUs/Aboutus'
 import Carousel from '../homeComponent/CarouselPage/Carousel';
 import { countries } from '../homeComponent/CarouselPage/Data';
 import Piechart from '../homeComponent/piechart/Piechart';
-import Research from '../homeComponent/ResearchPage/Research'; 
+// import Research from '../homeComponent/ResearchPage/Research'; 
+import { useNavigate } from 'react-router-dom';
 // import Service from '../ServicePage/Service';
 import './Home.css'
 const Home = () => {
+    const HandleResearch = () => {
+        const navigate = useNavigate();
+        navigate('/Research');
+        // setIsLoggedIn(false);
+    }
     return (
         <>
             {/* <Navbar/> */}
@@ -61,7 +67,23 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-
+                <div className="space"></div>
+                <div className="datacontainer">
+                    <div className="image-container"> 
+                     <div className='space'>
+                        <Piechart className='piechartcss'/></div>
+                        </div>
+                        <div className="text-container">
+                        <h3 className="text-head">You Want To See Our Prediction of Howmuch Residue will be generated according to the size of your land?</h3>
+                        <div className="space"></div>
+                            <button class="learn-more" onClick={HandleResearch}>
+  <span class="circle" aria-hidden="true">
+  <span class="icon arrow"></span>
+  </span>
+  <span class="button-text">Learn More</span>
+</button>
+                        </div>
+                        </div>
                 <div className="space"></div>
  
                 {/* Contact us page */}

@@ -96,6 +96,9 @@ function Auction(props) {
   const [h,setH] = useState([]);
   const [Start,setStart] = useState(0);
   const [user,setUser] = useState('');
+  const [Cuser,setCuser] = useState('');
+  const [sDate, setSDate] = useState('');
+  const [cDate, setCDate] = useState(new Date());
   // const {user,setUser}=useContext(DeepContext);
   const [Hig,setHig] = useState(0);
   const handleSubmit = (event) => {
@@ -129,8 +132,17 @@ function Auction(props) {
       // console.log("data is here",data);
       setStart(data);
     })
+    socket.on("startDetails",(data)=>{
+      console.log("This is details",cDate.getTime(),new Date(data.endDate).getTime());
+      
+      setSDate(new Date(data.endDate).toLocaleString());
+      
+    })
+    
     socket.on("curr_bid",(data)=>{
-      setHig(data);
+      console.log(data);
+      setHig(data.Bid);
+      setCuser(data.User);
     })
     socket.on("bids",(data)=>{
       // console.log("kya mast mossam hai",[...data]);
@@ -139,8 +151,8 @@ function Auction(props) {
           setbids([...bids,...data]);
         }
       })
-        
     })
+    
     
   }
   useEffect(() => {
@@ -151,6 +163,7 @@ function Auction(props) {
       alert(data.msg);
 
     })
+
     socket.on("receive_bid",(data)=>{
       console.log(data);
       setH((h)=>[...h,data]);
@@ -160,55 +173,55 @@ function Auction(props) {
           setbids([...bids,data]);
         }
       })
-    
-
       socket.on("curr_bid",(data)=>{
         setHig(data);
       })
-
+      
     });
+    setCDate(new Date());
     console.log(user);
     
-  }, [socket])
+  }, [socket,cDate,Cuser])
   
   return (
     <>
    
     <div className="container mx-2">
-      <div className="formBox">
-     
+        <h1>Enter Code</h1>
         <form onSubmit={SubmitCode}>
-        <h2>
-         <label>Enter Code</label> </h2>
     <input
         type="number"
         value={Code}
         onChange={(event) => setCode(event.target.value)}
       />
-      <button type="submit" className='subcen'>Submit</button> 
-
+      <button type="submit">Submit</button> 
     </form>
-      </div>
-        
     <div className="row">
       <div className="col-md-8 offset-md-2">
         <h1 className="text-center">Auction</h1>
         <h3 className="text-center">Intial Bid : {Start} 
  || Highest Bid : {Hig}</h3>
-<div className="chat-container">
-
- <AuctionList bids={bids} user={user}/>
- </div>
- <form onSubmit={handleSubmit}>
+ <h3 className="text-center">End Date : {sDate} || Curr Date : {cDate.toLocaleString()}</h3>
+ {(new Date(sDate).getTime() < new Date(cDate).getTime())?
+ <>{(Cuser === user)?<h1 className='text-center'>You Win</h1> :<h1 className='text-center'>{Cuser} wins the Auction</h1>}</>:
+ <>
+ <div className="chat-container">
+<AuctionList bids={bids} user={user}/>
+</div>
+<form onSubmit={handleSubmit}>
         <div className="chat-input">
           <div className="input-group">
             <input type="number"  value ={amount} onChange={(event) => setAmount(event.target.value)}  className="form-control" placeholder="Type your message..."/>
             <div className="input-group-append">
-              <button type="submit" className="btn btn-primary ">Send</button>
+              <button type="submit" className="btn btn-primary">Send</button>
             </div>
           </div>
         </div>
         </form>
+ </>
+ }
+
+ 
       </div>
     </div>
     

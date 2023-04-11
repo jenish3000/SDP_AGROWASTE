@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 html{
     font-size: 62.5%;
 }
@@ -39,7 +39,18 @@ html{
     /* margin-top: 100px; */
     padding: 5rem;
   }
-
+  .piechartcss{
+    width: 10rem;
+    /* margin: 20rem; */
+    padding: 5rem;
+  }
+.text-head{
+  font-family: 'Anton', sans-serif;
+  font-stretch: expanded;
+  font-size:x-large;
+  /* font-style:oblique; */
+  line-height: 3.5rem;
+}
   .text-container{
     padding: 3rem;
     font-size: 1.5rem;
@@ -92,7 +103,7 @@ html{
    
    button.learn-more {
     width: 12rem;
-    height: auto;
+    height: 2.5rem;
    }
    
    button.learn-more .circle {
@@ -139,20 +150,20 @@ html{
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
     top: 0;
-    left: 0;
+    left: 0.20rem;
     right: 0;
     bottom: 0;
-    padding: 0.75rem 0;
-    margin: 0 0 0 1.85rem;
+    padding: .2rem 0;
+    margin: 0 -1.4rem 0 2.5rem;
     color: #282936;
     font-weight: 700;
-    line-height: 1.6;
+    line-height: 1.9;
     text-align: center;
     text-transform: uppercase;
    }
    
    button:hover .circle {
-    width: 100%;
+    width: 120%;
    }
    
    button:hover .circle .icon.arrow {

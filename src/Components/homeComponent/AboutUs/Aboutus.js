@@ -12,15 +12,18 @@ const Aboutus = () => {
       <h1>About Us</h1>
       <div className="row">
         <div className="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, urna id malesuada commodo, nibh risus ornare magna, vitae pharetra ipsum risus id augue. </p>
+          <p>Welcome to our website for agricultural waste management solutions! Our team is dedicated to providing sustainable and innovative solutions to help farmers manage their waste in a responsible and environmentally friendly way. </p>
         </div>
         <div className="col-md-6">
-          <p>Sed auctor, urna id malesuada commodo, nibh risus ornare magna, vitae pharetra ipsum risus id augue. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus cumque debitis ipsum fuga vel saepe recusandae nobis necessitatibus eum delectus alias nihil nostrum aliquam eius voluptatum doloribus odit, aspernatur incidunt voluptate est! Blanditiis totam nesciunt placeat voluptatum saepe, corporis eligendi? </p>
+          <p>At our core, we are committed to sustainability and reducing the environmental impact of agriculture. We believe that by working together, we can create a better future for ourselves and for the planet. Our team of experienced professionals is passionate about finding solutions that benefit both farmers and the environment.</p>
         </div>
       </div>
       <button className="btn btn-primary" onClick={showMore}>Show More</button>
       <div id="more-info" className="d-none">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, urna id malesuada commodo, nibh risus ornare magna, vitae pharetra ipsum risus id augue.</p>
+        <p>We work closely with our clients to understand their unique needs and develop customized solutions that meet their specific requirements. Our team of experts is always available to provide guidance and support throughout the entire waste management process.</p>
+        <p>
+
+Thank you for visiting our website and we look forward to working with you to create a more sustainable future for agriculture.</p>
       </div>
     </div>
     </>

@@ -6,11 +6,35 @@ const Profile = () => {
     const {user,setUser}=useContext(DeepContext);
   // const [user1, setUser1] = useState({});
   const [farmerDetails, setFarmerDetails] = useState({
-    name: '',
-    age: '',
-    location: '',
-    cropType: ''
+    Address: '',
+    
+    // location: '',
+    CropsType: '',
+    LandSize: '',
   });
+  // const UpdateProfile = async (e) => {
+  //   e.preventDefault();
+  //   if (company.password === company.cpassword) {
+  //     const data = await axios.post('http://localhost:5000/SignUpCompany', {
+  //       name: company.name,
+  //       mobileno: company.mobileno,
+  //       email: company.email,
+  //       password: company.password,
+  //     })
+  //     // console.log(data.data);
+  //     if (data.data.success) {
+  //       showAlert(data.data.msg,'success');
+  //       navigate('/LoginCompany')
+  //     } else {
+  //       showAlert(data.data.msg,'danger');
+  //     }
+  //   }
+  //   else{
+  //     alert("Password Not Matching");
+  //   }
+
+  // }
+
 
   const handleChange = (event) => {
     setFarmerDetails({
@@ -59,8 +83,8 @@ const Profile = () => {
          Address :
           <input className='InProfile'
             type="text"
-            name="name"
-            value={farmerDetails.name}
+            name="Address"
+            value={farmerDetails.Address}
             onChange={handleChange}
           />
         </label>
@@ -69,8 +93,8 @@ const Profile = () => {
           Types  of crops:
           <input className='InProfile'
             type="text"  
-            name="age"
-            value={farmerDetails.age}
+            name="CropsType"
+            value={farmerDetails.CropsType}
             onChange={handleChange}
           />
         </label>
@@ -79,29 +103,29 @@ const Profile = () => {
           Land Size in (Acre):
           <input className='InProfile'
             type="text"
-            name="location"
-            value={farmerDetails.location}
+            name="LandSize"
+            value={farmerDetails.LandSize}
             onChange={handleChange}
           />
         </label>
         <br />
-        <label>
+        {/* <label>
           :
           <input  className='InProfile'
             type="text"
-            name="cropType"
+            name=""
             value={farmerDetails.cropType}
             onChange={handleChange}
           />
         </label>
-        <br />
+        <br /> */}
         <button type="submit" className='UpdateProfile'>Update Profile</button>
       </form>
       <h2>Farmer Details:</h2>
-      <p>Name: {farmerDetails.name}</p>
-      <p>Age: {farmerDetails.age}</p>
-      <p>Location: {farmerDetails.location}</p>
-      <p>Crop Type: {farmerDetails.cropType}</p>
+      <p>Address: {farmerDetails.Address}</p>
+      <p>Types of Crops Planted : {farmerDetails.CropsType}</p>
+      <p>Land Size (in Acre): {farmerDetails.LandSize}</p>
+      {/* <p>Crop Type: {farmerDetails.cropType}</p> */}
     </div>
           
         </div>
