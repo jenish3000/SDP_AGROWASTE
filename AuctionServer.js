@@ -52,18 +52,21 @@ io.on('connection',(socket)=>{
     if(resp){
       console.log("Joined Successfully");
       socket.join(data.Code);
+      socket.emit("startDetails",resp);
 
       //Find first bid by admin and send as starting bid
-      let resp = await AuctionModel.findOne({Room :data.Code});
-      if(resp)
-      socket.emit("starting_bid",resp.Bid);
+      let respon = await AuctionModel.findOne({Room :data.Code});
+      if(respon)
+      {
+        socket.emit("starting_bid",respon.Bid);
+      }
       else{
         socket.emit("starting_bid",0);
       }
       //latest bid is Current Highest bid
       let res = await AuctionModel.find({Room:data.Code}).sort({_id:-1}).limit(1);
       if(res)
-     {socket.emit("curr_bid",res[0].Bid);
+     {socket.emit("curr_bid",res[0]);
     //  res[0].Bid
     } 
      else{

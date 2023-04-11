@@ -21,6 +21,13 @@ const RoomSchema = mongoose.Schema({
         min:4,
         max:8,
     },
+    StartBid :{
+        type : Number,
+        required : true,
+        // unique : true,
+        // min:4,
+        // max:8,
+    },
     startDate :{
         type:Date,
         required:true,

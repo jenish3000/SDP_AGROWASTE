@@ -5,7 +5,9 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth')
 const config = require('config');
-const User = require('../models/User')
+const User = require('../models/User');
+const service =require('../models/Service');
+const ClearedList=require('../models/ClearedList');
 // const service = require('../models/Service')
 const Admin = require('../models/Admin')
 const { encryption } = require('../middleware/hasing')
@@ -15,7 +17,6 @@ const { check, validationResult } = require('express-validator/check');
 const { response } = require('express');
 const Company = require('../models/Company');
 const RoomModel = require('../models/AuctionRoom');
-const service = require('../models/Service');
 // const { default: Service } = require('../../src/Components/ServicePage/Service');
 // router.get('/get',(req,res)=>{res.send("server is running")});
 router.get('/', auth, async (req, res) => {
@@ -307,7 +308,7 @@ router.post("/LoginAdmin", async (req, res) => {
                 type: "Admin",
                 name: admin.name,
                 success: true,
-                message: `Hello ${Admin.name}, You Logged in successfully!`,
+                message: `Hello ${admin.name}, You Logged in successfully!`,
                 
             });
 
@@ -318,36 +319,28 @@ router.post("/LoginAdmin", async (req, res) => {
     }
 });
 
-router.get('/Service',(req,res)=>{
-    res.send("mast plan h");
-})
-router.post('/Service', async(req, res) => {
+router.post("/Service",async (req,res)=>{
     const { email, password } = req.body;
-    const date = new Date(req.body.du1);
-    console.log("from service",req.body.email,date);
     try {
         // console.log("service req body",req.body);
-        const user = await User.findOne({ email: email });
-        console.log(user);
-        const EmailExist = await service.findOne({ email: email });
-        console.log(EmailExist);
+        const user = await User.findOne({ email: req.body.email });
+        const EmailExist = await service.findOne({ email: req.body.email });
         if (user) {
-            if (EmailExist) return res.status(200).send({success : false,msg : "Already Requested!!!"});
+            if (EmailExist) return res.status(200).send("Already Requested!!!");
             else {
                 const newSer = await service.create({
                     email: req.body.email,
                     mobileno: req.body.mobileno,
                     acre: req.body.acre,
                     ptype: req.body.ptype,
-                    date: new Date(req.body.date1),
-                    du1: new Date(req.body.du1),
-                    du2: new Date(req.body.du2),
+                    date: req.body.date,
+                    du1: req.body.du1,
+                    du2: req.body.du2,
                     type: req.body.type,
                     mtype: JSON.stringify(req.body.mtype),
                     // userType: req.body.type
                 });
                 console.log("Printed", newSer);
-
                 if (newSer) {
                     res.json({ success: true, msg: "successfully requested for harvesting." })
                 }
@@ -359,6 +352,7 @@ router.post('/Service', async(req, res) => {
         } else {
             res.status(401).json({ success: false, msg: "you must be a farmer to make request for service!!" })
         }
+        
     } catch (err) {
         console.error(err.message)
         res.status(500).send('Server Error');
@@ -378,6 +372,7 @@ router.post('/CreateRoom', async (req, res) => {
                 Name: req.body.Name,
                 description: req.body.description,
                 Code: req.body.Code,
+                StartBid: req.body.StartBid,
                 startDate: req.body.startDate,
                 endDate: req.body.endDate,
 
@@ -402,6 +397,43 @@ router.post('/CreateRoom', async (req, res) => {
 
 }
 });
+router.post('/ClearReqForm', async (req, res) => {
+    try {
+        console.log("service req body",req.body);
+        // const user = await Admin.findOne({email:req.body.email });
+        
+        const ReqExist = await service.findOne({ email: req.body.email });
+        // console.log(user);
+        // if(user){
+        if (!ReqExist) return res.status(200).send("No such request exists!!!");
+        else {
+
+            const ClearList = await ClearedList.create({
+                tResidue: req.body.tResidue,
+        tgrain: req.body.tgrain,
+        sdate: req.body.sdate
+
+                // userType: req.body.type
+            });
+            // console.log("Printed",newSer);
+            if (ClearList) {
+                res.json({ success: true, msg: "Request is successfully removed from Pending Requests && added to ClearedList.." })
+            }
+            else {
+                res.status(401).json({ success: false, msg: "Request is still in pendingList." })
+            }
+            // newCom.save().then((result) => {
+            //     console.log("Saved");
+            //     res.redirect('/');
+            // }).catch(err => res.status(300).send(err));
+        }
+    
+}catch (err) {
+    console.error(err.message)
+    res.status(500).send('Server Error');
+
+}
+});
 
 
 
@@ -409,11 +441,12 @@ router.post("/AdminHome",async(req,res)=>{
     try{
 
         const room = await RoomModel.find({});
-        const service = await Service.find({});
+        const service1 = await service.find({});
 
-
-        if(room && service){
-            res.status(200).send({room,service});
+        // console.log("mom",room);
+        // console.log("mom",service1);
+        if(room && service1){
+            res.status(200).send({room,service1});
         }
         else{
             res.status(202).send({message:"Not Found!"});
