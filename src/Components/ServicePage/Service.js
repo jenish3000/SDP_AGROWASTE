@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
-import LoginCompany from '../LoginPage/LoginCompany'
+// import LoginCompany from '../LoginPage/LoginCompany'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Home from '../HomePage/Home'
-import Navbar from '../Navbar/Navbar';
+// import Home from '../HomePage/Home'
+// import Navbar from '../Navbar/Navbar';
 import "./service.css"
 import DeepContext from '../../context/DeepContext';
 // this is new
@@ -105,7 +105,8 @@ const Service = () => {
       {/* <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta> */}
       {/* <div className="space"></div> */}
       <div id='JB' className="center1">
-        <h1>Details</h1>
+        <h1>Service Form
+        </h1>
         <form onSubmit={Servicefun} method="POST" id="myForm">
           <div className="txt_field">
             <input type="text" required name='email' value={service.email} onChange={handleInput} />
@@ -184,28 +185,28 @@ const Service = () => {
               <input  type="checkbox" value = "Machine1" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
-            <label className='jb3'>Machine 1</label>
+            <label className='jb3'>Tractor</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine2" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
-            <label className='jb3'>Machine 2</label>
+            <label className='jb3'>Soil cultivator</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine3" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
-            <label className='jb3'>Machine 3</label>
+            <label className='jb3'>Disc Plough</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine4" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
-            <label className='jb3'>Machine 4</label>
+            <label className='jb3'>Thresher</label>
             </div>
           
             {/* <select id="faq" name="mtype" value={service.mtype} onChange={handleInput}>

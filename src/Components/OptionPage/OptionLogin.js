@@ -30,7 +30,7 @@ const OptionLogin=() =>{
  <button className='Option' id='card2' onClick={handleCompany}>
  <div class="container1">
   <div class="card">
- Company
+ Buyer
   
   </div>
 </div>

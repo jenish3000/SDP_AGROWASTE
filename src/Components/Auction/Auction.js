@@ -181,7 +181,7 @@ function Auction(props) {
     setCDate(new Date());
     console.log(user);
     
-  }, [socket,cDate,Cuser])
+  }, [socket,cDate])
   
   return (
     <>

@@ -79,7 +79,7 @@ const LoginCompany = () => {
     <>
     {/* <Navbar/> */}
       <div className="centerL">
-      <h1>Login For Company</h1>
+      <h1>Login For Buyer</h1>
       <form  onSubmit={Companylogin} method="post">
         <div className="txt_field">  
 
