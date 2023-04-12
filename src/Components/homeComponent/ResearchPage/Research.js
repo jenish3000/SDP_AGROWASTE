@@ -63,23 +63,25 @@ const Reasearch = () => {
     return (
         <>
             <div>
-                <header>
-                    <h1 class="head">
+                <header className="head-container143">
+                    <h1 className="head143">
                         Survey of Punjab satellite images Using GIS(Geographic Information System)
                     </h1>
-                    <hr /><hr />
+                    <hr />
                 </header>
                 <div>
-                    <form id="f1" >
-                   
-                        <input type="text" id="input" name="input"  />(in hector)
+                    <form id="f143" >
+                    <label id="l143"><h3>Enter size of farm: (in hector)</h3> </label> 
+
+                        <input type="text" id="input" className="TypeHector" name="input"/>
                         {/* <input type="submit"  id="submit" /> */}
+
                         <button type="submit" className="btn btn-primary" onClick={jb}>Submit</button>
-                        <label id="l1"> Enter size of farm:</label>
                         
                     </form>
-                    <div id="result">
-                        Box Generated:<div id="box">{box1}</div>
+                    <div className="space"></div>
+                    <div id="result143">
+                        Box Generated:<div id="box143">{box1}</div>
                         <br />
                         Total residue(waste) Generated (in kgs):<div id="residue">{residue1}</div>
                         <br />
@@ -87,39 +89,43 @@ const Reasearch = () => {
                         <br />
                     </div>
 
-                </div>
+                </div>       
+                <div className="space"></div>
                 <header>
-                    <h1 class="head">Introduction</h1>
-                    <hr /><hr />
+                    <h1 className="head143">Introduction</h1>
+                
                 </header>
-                <div>
-                    We have used well-known GIS software QGIS , Also used SCP(Semi-Automatic Classification) plugin.
+                <div className="container143">
+                    <h1 className="data-head143">SCP(Semi-Automatic Classification Plugin)</h1>
 
-                    <h1>SCP</h1>
-                    <span>The Semi-Automatic Classification Plugin (SCP) is a free open source plugin for QGIS that allows  for the supervised classification of remote sensing images, providing tools for the download, the preprocessing and postprocessing of images.
+                    
+                    <span className="data-para143">We have used well-known GIS software QGIS , Also used SCP(Semi-Automatic Classification) plugin.The Semi-Automatic Classification Plugin (SCP) is a free open source plugin for QGIS that allows  for the supervised classification of remote sensing images, providing tools for the download, the preprocessing and postprocessing of images.
+                    </span>       
+<br />
+                    <span className="data-para143"> overall objective of SCP is to provide a set of intertwined tools for raster processing in order to make an automatic workflow and ease the land cover classification, which could be performed also by people whose main field is not remote sensing.</span><br />
 
-                    </span><br /><br />
-
-                    <span> overall objective of SCP is to provide a set of intertwined tools for raster processing in order to make an automatic workflow and ease the land cover classification, which could be performed also by people whose main field is not remote sensing.</span><br /><br />
-
-                    <span>Search and download is available for ASTER, GOES, Landsat, MODIS, Sentinel-1, Sentinel-2, and Sentinel-3 images. Several algorithms are available for the land cover classification. This plugin requires the installation of GDAL, OGR, Numpy, SciPy, and Matplotlib. Some tools require also the installation of SNAP (ESA Sentinel Application Platform).</span>
-                    <br /><br />
+                    <span className="data-para143">Search and download is available for ASTER, GOES, Landsat, MODIS, Sentinel-1, Sentinel-2, and Sentinel-3 images. Several algorithms are available for the land cover classification. This plugin requires the installation of GDAL, OGR, Numpy, SciPy, and Matplotlib. Some tools require also the installation of SNAP (ESA Sentinel Application Platform).</span>
+                        
                 </div>
-                <span id="raw">Satellite Image</span><span id="pro">Processed Image</span><span id="remarks">Remarks</span>
-                <div class="flex">
-                    <img class="img" src="../images/raw.png" />
-                    <img class="img" src="../images/processed.png" />
+                <div className="space143"></div>
+                <span id="raw143">Satellite Image</span><span id="pro143">Processed Image</span><span id="remarks143">Remarks</span>
+                <div className="flex143">
+                    <img className="img143" src="../images/raw.png" />
+                    <img className="img143" src="../images/processed.png" />
                     <img src="../images/label.png" height="10%" />
 
                 </div>
-                <br />
-                <div id="csv">
-                    <img id="csvimg" src="../images/csv.png" height="50%" width="40%" />
+                <div className="space143"></div>
+                <div id="csv143">
+                    <img id="csvimg143" src="../images/csv.png" height="50%" width="40%" />
                 </div>
+                <div className="space"></div>
+                <div className="space143"></div>
                 <footer>
-                    For more details Contact : 20ituos130@ddu.ac.in | 20itubs141@ddu.ac.in | 20itubs019@ddu.ac.in
+                    <div className="aboutus143">
+                    For more details Contact : 20ituos130@ddu.ac.in | 20itubs141@ddu.ac.in | 20itubs039@ddu.ac.in
 
-
+                    </div>
 
                 </footer>
             </div>

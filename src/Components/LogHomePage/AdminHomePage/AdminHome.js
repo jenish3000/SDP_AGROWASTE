@@ -36,8 +36,8 @@ const AdminHome = () => {
   }, [])
 
   useEffect(() => {
-    console.log("Room->", room)
-    console.log("Service->", service)
+      // console.log("Room->", room)
+      // console.log("Service->", service)
   }, [room || service])
 const handleDeleteRequest=(ele)=>{
   // console.log()

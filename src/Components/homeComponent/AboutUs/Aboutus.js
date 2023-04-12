@@ -1,5 +1,4 @@
 import React from 'react'
-
 function showMore() {
     document.getElementById("more-info").classList.remove("d-none");
     document.querySelector("button.btn-primary").style.display = "none";

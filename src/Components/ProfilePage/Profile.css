@@ -45,12 +45,12 @@ label {
   margin-bottom: 5px;
 }
 
-input[type="text"] {
+label > input[type="text"] {
   padding: 10px;
   border-radius: 5px;
   border: none;
   background-color: #f9f9f9;
-  width: 100%;
+  width: 100%;  
   box-sizing: border-box;
 }
 
