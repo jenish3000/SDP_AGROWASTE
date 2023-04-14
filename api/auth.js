@@ -7,6 +7,7 @@ const auth = require('../middleware/auth')
 const config = require('config');
 const User = require('../models/User');
 const service =require('../models/Service');
+const AuctionModel=require('../models/Auction');
 const ClearedList=require('../models/ClearedList');
 // const service = require('../models/Service')
 const Admin = require('../models/Admin')
