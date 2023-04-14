@@ -140,7 +140,8 @@ function Auction(props) {
     })
     
     socket.on("curr_bid",(data)=>{
-      setHig(data);
+      setHig(data.Bid);
+      setCuser(data.User);
     })
     socket.on("bids",(data)=>{
       // console.log("kya mast mossam hai",[...data]);
@@ -181,7 +182,7 @@ function Auction(props) {
     setCDate(new Date());
     console.log(user);
     
-  }, [socket])
+  }, [socket,Cuser,bids])
   
   return (
     <>
