@@ -10,7 +10,9 @@ import CompanyHome from './LogHomePage/CompanyHome';
 import FarmerHome from './LogHomePage/FarmerHome';
 import AdminHome from './LogHomePage/AdminHomePage/AdminHome';
 import CompleteRequest from './LogHomePage/AdminHomePage/FulfillRequestForm/CompleteRequest'
+import ClearReqForm from './LogHomePage/AdminHomePage/FulfillRequestForm/ClearReqForm'
 import Auction from './Auction/Auction';
+import ShowAuction from './LogHomePage/AdminHomePage/ShowAuctionDetails/ShowAuction'
 import AuctionList from './Auction/AuctionList';
 import Home from './HomePage/Home';
 import Forget from './LoginPage/Forget';
@@ -49,7 +51,13 @@ const Index2 = () => {
 
 
         <Route path='/AdminHome' element={<AdminHome/>}/>
+
+
         <Route path='/CompleteRequest' element={<CompleteRequest/>}/>
+        <Route path='/ClearReqForm' element={<ClearReqForm/>}/>
+
+
+        <Route path='/ShowAuction' element={<ShowAuction/>}/>
 
         <Route path='/Auction' element={<Auction/>}/>
         <Route path='/AuctionList' element={<AuctionList/>}/>

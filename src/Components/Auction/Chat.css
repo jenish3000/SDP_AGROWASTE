@@ -13,7 +13,30 @@ html{
 }
 
 
-
+.formBox{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 1px solid rgb(57, 57, 57);
+  padding: 3rem 1rem;
+  /* padding-top: 2rem;
+  padding-bottom: 90px;
+  padding-right: 40px;
+  padding-left: 40px; */
+  background-color: rgb(255, 251, 251);
+  border-radius: 1rem;
+  position: relative;
+}
 
 
 .chat-container {
@@ -44,7 +67,22 @@ html{
   .chat-input {
     margin-top: 2rem;
   }
-/* 
+
+  input[type="number"] {
+    margin: 1rem;
+    padding: 1.2rem;
+    border-radius: 0.6rem;
+    border: none;
+    background-color: #f6f7eb;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .subcen{
+    margin-top: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  }
+  /* 
   @media(min-width:1600px){
     html{ 
       font-size: 75%;

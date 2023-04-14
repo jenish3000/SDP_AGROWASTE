@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
-import LoginCompany from '../LoginPage/LoginCompany'
+// import LoginCompany from '../LoginPage/LoginCompany'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Home from '../HomePage/Home'
-import Navbar from '../Navbar/Navbar';
+// import Home from '../HomePage/Home'
+// import Navbar from '../Navbar/Navbar';
 import "./service.css"
 import DeepContext from '../../context/DeepContext';
 // this is new
@@ -59,12 +59,21 @@ const Service = () => {
     console.log("hello",date1);
 
     const date2 = document.getElementById('Date2').value;
+<<<<<<< HEAD
     console.log("hello",date2);
 
     console.log(date12,date1,date2,arr,datatype);
     setService({email :service.email,mobileno : service.mobileno,acre : service.acre,ptype : service.ptype,date1 : date12,du1 : date1,du2 : date2,type : datatype, mtype :  arr});
     
     console.log(service);
+=======
+    console.log("hello",date2); 
+
+    setService({email :service.email,mobileno : service.mobileno,acre : service.acre,ptype : service.ptype,date1 : date12,du1 : date1,du2 : date2,type : datatype, mtype :  arr});
+    
+    console.log(service);
+
+>>>>>>> d6d09aa78e277c355e7bad67486311ad0ad6de77
     const data = await axios.post('http://localhost:5000/Service', {
       email: service.email,
       mobileno: service.mobileno, 
@@ -104,8 +113,14 @@ const Service = () => {
       </Navbar> */}
       {/* <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta> */}
       {/* <div className="space"></div> */}
+<<<<<<< HEAD
       <div className="center JB">
         <h1>Details</h1>
+=======
+      <div id='JB' className="center1">
+        <h1>Service Form
+        </h1>
+>>>>>>> d6d09aa78e277c355e7bad67486311ad0ad6de77
         <form onSubmit={Servicefun} method="POST" id="myForm">
           <div className="txt_field">
             <input type="text" required name='email' value={service.email} onChange={handleInput} />
@@ -184,28 +199,28 @@ const Service = () => {
               <input  type="checkbox" value = "Machine1" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
-            <label className='jb3'>Machine 1</label>
+            <label className='jb3'>Tractor</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine2" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
-            <label className='jb3'>Machine 2</label>
+            <label className='jb3'>Soil cultivator</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine3" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
-            <label className='jb3'>Machine 3</label>
+            <label className='jb3'>Disc Plough</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine4" className='myCheckBox'/>
               <div class="checkmark"></div>
             </label>
-            <label className='jb3'>Machine 4</label>
+            <label className='jb3'>Thresher</label>
             </div>
           
             {/* <select id="faq" name="mtype" value={service.mtype} onChange={handleInput}>
@@ -275,3 +290,4 @@ const Service = () => {
 }
 
 export default Service
+

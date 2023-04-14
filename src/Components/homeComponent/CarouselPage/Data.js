@@ -3,20 +3,20 @@ export const countries = [
       image: "/images/agri3.jpg",
       title: "Brazil",
     },
-    {
-      image: "/images/agri4.jpg",
-      title: "China",
-    },
     // {
-    //   image: "/images/agri5.jpg",
-    //   title: "France",
+    //   image: "/images/farm.jpg",
+    //   title: "China",
     // },
-    // {
-    //   image: "/images/parali.jpg",
-    //   title: "Japan",
-    // }, 
     {
-      image: "/images/sugar.jpg",
+      image: "/images/burning3.jpg",
+      title: "France",
+    },
+    {
+      image: "/images/burning4.jpg",
+      title: "Japan",
+    }, 
+    {
+      image: "/images/farm3.jpg",
       title: "Norway",
     },
   ];

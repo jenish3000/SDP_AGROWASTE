@@ -43,7 +43,7 @@ const LoginAdmin = () => {
   return (
     <>
     {/* <Navbar/> */}
-      <div className="center">
+      <div className="centerL">
       <h1>Login For Admin</h1>
       <form method="post">
         <div className="txt_field">  

@@ -53,7 +53,7 @@ const SignUpAdmin = () => {
       {/* <Navbar style="background-color:#1a4664;"> */}
       {/* </Navbar> */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-      <div className="center">
+      <div id='Xbox' className="centerS">
         <h1>SignUp for Admin
         </h1>
         <form onSubmit={Adminsignup} method="post">

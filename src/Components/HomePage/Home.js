@@ -67,31 +67,33 @@ const Home = () => {
                     <div className="space"></div>
                     <div className="datacontainer">
                         <div className="text-container">
-                            <h3 className="text-head">Pollution</h3>
+                            <h3 className="text-head">Pollution Because of Burning of Residue </h3>
                             <p className="text-contant">While more than 80% of Indian cities struggle with unhealthy air quality, the landlocked capital of New Delhi in the northern part of the country suffers the most toxic air—and it’s at its worst every year from October through December. During these months, a grayish-yellow haze hangs over the city, leading government agencies and the Environment Pollution Prevention and Control Authority to declare public health emergencies, shut down schools, halt construction work and ground flights due to poor visibility. Studies estimated that each year tens of thousands of citizens die from respiratory illnesses due to air pollution.</p>
                         </div>
                         <div className="image-contianer">
-                            <img src="../images/parali.jpg" className="image1" alt="" />
+                            <img src="../images/farm2.jpg" className="image1" alt="" />
                         </div>
                     </div>
                     <div className="space"></div>
                     <div className="datacontainer">
                         <div className="image-contianer">
-                            <img src="../images/sugar.jpg" className="image2" alt="" />
+                            <img src="../images/farmer1.jpeg" className="image2" alt="" />
                         </div>
                         <div className="text-container">
-                            <h3 className="text-head">Residue</h3>
-                            <p className="text-contant">The burning of crop residues generates numerous environmental problems. The main adverse effects of crop residue burning include the emission of greenhouse gases (GHGs) that contributes to the global warming, increased levels of particulate matter (PM) and smog that cause health hazards, loss of biodiversity of agricultural lands, and the deterioration of soil fertility .</p>
+                            <h3 className="text-head">The Problem ???</h3>
+                            <p className="text-contant">-One report states that about 500 million Tons of Agriculture Residue( plant material remaining after harvesting, including leaves, stalks, roots etc.) is produced Every year & from that 92 million Tons of crop residue is burnt..<br></br>
+-Stubble burning is a huge problem, Especially in a northern part of India and leads to huge environmental damage.<br/>
+-Machinery to clear the residue is expensive & manually cleaning is very time consuming, that's why farmers resorted it to burning down stubble.</p>
                         </div>
                     </div>
                     <div className="space"></div>
                     <div className="datacontainer">
                         <div className="text-container">
-                            <h3 className="text-head">side-effects</h3>
+                            <h3 className="text-head">side-effects Of Stubble Burning</h3>
                             <p className="text-contant">Crop residue burning significantly increases the quantity of air pollutants such as CO2, CO, NH3, NOX, SOX, Non-methane hydrocarbon , volatile organic compounds (VOCs), semi volatile organic compounds (SVOCs) and PM. This basically accounts for the loss of organic carbon, nitrogen, and other nutrients, which would otherwise have retained in soil </p>
                         </div>
                         <div className="image-contianer">
-                            <img src="../images/side-effects.jpg" className="image3" alt=""/>
+                            <img src="../images/farm1.jpeg" className="image3" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -100,7 +102,7 @@ const Home = () => {
                 <div className="datacontainer">
                     <div className="image-container"> 
                      <div className='space'>
-                        <Piechart/></div>
+                        <Piechart className='piechartcss'/></div>
                         </div>
                         <div className="text-container">
                         <h3 className="text-head">You Want To See Our Prediction of Howmuch Residue will be generated according to the size of your land?</h3>
