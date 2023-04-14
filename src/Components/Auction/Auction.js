@@ -106,7 +106,7 @@ function Auction(props) {
     // setUser("qq");
   
     console.log("hii i am msg",user);
-    // console.log(price,amount);
+    console.log(Hig,amount);
     if(Hig < amount){ 
       setprice(amount);
       // console.log(user);
@@ -135,11 +135,12 @@ function Auction(props) {
     socket.on("startDetails",(data)=>{
       console.log("This is details",cDate.getTime(),new Date(data.endDate).getTime());
       
-      setSDate(new Date(data.startDate).toLocaleString());
+      setSDate(new Date(data.endDate).toLocaleString());
       
     })
     
     socket.on("curr_bid",(data)=>{
+      console.log(data,"curr bid");
       setHig(data.Bid);
       setCuser(data.User);
     })
@@ -173,15 +174,16 @@ function Auction(props) {
         }
       })
       socket.on("curr_bid",(data)=>{
-        setHig(data);
+        console.log(data,"mast chhe j chhe e");
+        setHig(data.Bid);
+        setCuser(data.User);
       })
       
-
     });
-    
+    setCDate(new Date());
     console.log(user);
     
-  }, [socket])
+  }, [socket,bids,Cuser]);
   
   return (
     <>

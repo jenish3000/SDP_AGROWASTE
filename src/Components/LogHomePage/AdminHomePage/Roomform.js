@@ -26,7 +26,8 @@ const Roomform = () => {
       description: Room.description,
       Code: Room.Code,
       startDate: Room.startDate,
-      endDate: Room.endDate
+      endDate: Room.endDate,
+      StartBid : "2000"
     })
     console.log("deep", data);
     if (data.data.success) {

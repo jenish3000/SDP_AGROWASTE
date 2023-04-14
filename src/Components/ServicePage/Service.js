@@ -61,6 +61,7 @@ const Service = () => {
     const date2 = document.getElementById('Date2').value;
     console.log("hello",date2);
 
+    console.log(date12,date1,date2,arr,datatype);
     setService({email :service.email,mobileno : service.mobileno,acre : service.acre,ptype : service.ptype,date1 : date12,du1 : date1,du2 : date2,type : datatype, mtype :  arr});
     
     console.log(service);
