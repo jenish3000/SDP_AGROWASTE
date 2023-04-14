@@ -66,7 +66,9 @@ io.on('connection',(socket)=>{
       //latest bid is Current Highest bid
       let res = await AuctionModel.find({Room:data.Code}).sort({_id:-1}).limit(1);
       if(res)
-     {socket.emit("curr_bid",res[0]);
+     {
+      console.log(res[0],"This is what we are sending");
+      socket.emit("curr_bid",res[0]);
     //  res[0].Bid
     } 
      else{
@@ -106,7 +108,7 @@ io.on('connection',(socket)=>{
         bid = data.bid;
         // socket.broadcast.to(data.Code).emit("receive_bid",data);
          io.sockets.in(data.Code).emit('receive_bid', {Bid:data.bid,User : data.user,Room : data.Code});
-         io.sockets.in(data.Code).emit("curr_bid",data.bid);
+         io.sockets.in(data.Code).emit("curr_bid",{Bid:data.bid,User : data.user,Room : data.Code});
          await AuctionModel.create({Bid:data.bid,User : data.user,Room : data.Code});
         // io.to(data.Code).emit('receive_bid',data);
         // socket.to(data.Code).emit("receive_bid",data);

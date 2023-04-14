@@ -17,6 +17,7 @@ const { check, validationResult } = require('express-validator/check');
 const { response } = require('express');
 const Company = require('../models/Company');
 const RoomModel = require('../models/AuctionRoom');
+const AuctionModel = require('../models/Auction');
 // const { default: Service } = require('../../src/Components/ServicePage/Service');
 // router.get('/get',(req,res)=>{res.send("server is running")});
 router.get('/', auth, async (req, res) => {
@@ -322,10 +323,10 @@ router.post("/LoginAdmin", async (req, res) => {
 router.post("/Service",async (req,res)=>{
     const { email, password } = req.body;
     try {
-        // console.log("service req body",req.body);
-        const user = await User.findOne({ email: req.body.email });
+        console.log("service req body",req.body);
+        // const user = await User.findOne({ email: req.body.email });
         const EmailExist = await service.findOne({ email: req.body.email });
-        if (user) {
+        if (1) {
             if (EmailExist) return res.status(200).send("Already Requested!!!");
             else {
                 const newSer = await service.create({
@@ -380,6 +381,11 @@ router.post('/CreateRoom', async (req, res) => {
             });
             // console.log("Printed",newSer);
             if (createRoom) {
+                let data = await AuctionModel.create({
+                    Bid : req.body.StartBid,
+                    Room : req.body.Code,
+                    User : "Admin"
+                })
                 res.json({ success: true, msg: "successfully Created Room for the Auction.." })
             }
             else {
