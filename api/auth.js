@@ -18,7 +18,6 @@ const { check, validationResult } = require('express-validator/check');
 const { response } = require('express');
 const Company = require('../models/Company');
 const RoomModel = require('../models/AuctionRoom');
-const AuctionModel = require('../models/Auction');
 // const { default: Service } = require('../../src/Components/ServicePage/Service');
 // router.get('/get',(req,res)=>{res.send("server is running")});
 router.get('/', auth, async (req, res) => {
