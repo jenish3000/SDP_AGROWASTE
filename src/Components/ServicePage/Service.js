@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 // import LoginCompany from '../LoginPage/LoginCompany'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -16,20 +16,24 @@ const Service = () => {
   const navigate = useNavigate()
 
   const [service, setService] = useState({
-    email: "", mobileno: "", acre: "", ptype: "", date1: "", du1: "", du2: "", type: "", mtype: ""
+    email: "", mobileno: "", acre: "", ptype: "", date1: "", du1: "", du2: "", type: [], mtype: ""
   })
 
-  const dateValidate = () => {
-    if (service.du1 > service.du2) {
-      console.log("Start > end");
-      // console.log(service.du1.valueAsNumber);
-      // console.log(service.du2.valueAsNumber);
-    } else {  
-      // console.log("Ok");
-      // console.log(service.du1.valueAsNumber);
-      // console.log(service.du2.valueAsNumber);
-    }
-  };
+  useEffect(()=>{
+    console.log(service);
+  },[service]);
+
+  // const dateValidate = () => {
+  //   if (service.du1 > service.du2) {
+  //     console.log("Start > end");
+  //     // console.log(service.du1.valueAsNumber);
+  //     // console.log(service.du2.valueAsNumber);
+  //   } else {  
+  //     // console.log("Ok");
+  //     // console.log(service.du1.valueAsNumber);
+  //     // console.log(service.du2.valueAsNumber);
+  //   }
+  // };
   const Servicefun = async (e) => {
     e.preventDefault();
 
@@ -41,7 +45,7 @@ const Service = () => {
         console.log(data1[i].value);
       }
     }
-    console.log(datatype , "is selected");
+    // console.log(datatype , "is selected");
     const newValue = document.getElementsByClassName('myCheckBox');
     let arr = [];
     for(let i =0; i< newValue.length; i++){
@@ -52,19 +56,19 @@ const Service = () => {
       }
     }
     // console.log(arr);
-    const date12 = document.getElementById('Date12').value;
-    console.log("hello",date12);
+    // const date12 = document.getElementById('Date12').value;
+    // console.log("hello",date12);
 
-    const date1 = document.getElementById('Date1').value;
-    console.log("hello",date1);
+    // const date1 = document.getElementById('Date1').value;
+    // console.log("hello",date1);
 
-    const date2 = document.getElementById('Date2').value;
-    console.log("hello",date2);
+    // const date2 = document.getElementById('Date2').value;
+    // console.log("hello",date2);
 
-    console.log(date12,date1,date2,arr,datatype);
-    setService({email :service.email,mobileno : service.mobileno,acre : service.acre,ptype : service.ptype,date1 : date12,du1 : date1,du2 : date2,type : datatype, mtype :  JSON.stringify(arr)});
+    // console.log(date12,date1,date2,arr,datatype);
+    setService({email :service.email,mobileno : service.mobileno,acre : service.acre,ptype : service.ptype,date1 : service.date1,du1 : service.du1,du2 : service.du2,type : datatype, mtype :  JSON.stringify(arr)});
     
-    console.log(service);
+    // console.log(service);
     const data = await axios.post('http://localhost:5000/Service', {
       email: service.email,
       mobileno: service.mobileno, 
@@ -77,7 +81,7 @@ const Service = () => {
       mtype: service.mtype,
 
     })
-    console.log(data.data);
+    // console.log(data.data);
     if (data.data.success) {
       showAlert(data.data.msg, 'success');
       navigate('/')
@@ -132,20 +136,20 @@ const Service = () => {
           <div className="txt_field">
 
             <input type="date" id="Date12" name="date1" value={service.date1} onChange={handleInput} />
-            <label >When did you plant that crop?</label>
+            <label for="date12">When did you plant that crop?</label>
             {/* <span></span> */}
           </div>
           <div >
 
             <div className="txt_field">
-              <input type="date" id="Date1" name="du1" value={service.du1} onChange={handleInput} />
-              <label for="Date1">Approx duration of harvesting.</label>
+              <input type="date" id="Du1" name="du1" value={service.du1} onChange={handleInput} />
+              <label for="Du1">Approx duration of harvesting.</label>
               {/* <span></span> */}
             </div>
 
             <div className="txt_field">
-              <input type="date" id="Date2" name="du2" value={service.du2} onChange={handleInput} />
-              <label>To</label>
+              <input type="date" id="Du2" name="du2" value={service.du2} onChange={handleInput} />
+              <label for="Du2">To</label>
               {/* <span></span> */}
             </div>  </div>
 
@@ -154,15 +158,16 @@ const Service = () => {
             <label>What do you want to give ? </label>
             <span></span>
           </div>
+
           <div className="radio-inputs jb1">
             <label className="radio">
               <input type="radio" name="radio1" value ="Only Residue"/>
-              <div className="name">Only Residue</div>
+              <div className="name" onClick={() => setService({...service, mtype: "Only Residue"})}>Only Residue</div>
 
             </label>
             <label className="radio">
               <input type="radio" name="radio1" value = "Both Residue & Grains"/>
-              <div className="name">Both Residue & Grains</div>
+              <div className="name" onClick={() => setService({...service, mtype: "Both Residue & Grains"})}>Both Residue & Grains</div>
             </label>
           </div>
 
@@ -176,35 +181,35 @@ const Service = () => {
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Harvester" className='myCheckBox'/>
-              <div class="checkmark"></div>
+              <div class="checkmark" onClick={() => setService({...service, type: "Harvester"})}></div>
             </label>
             <label className='jb3'>Harvester</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine1" className='myCheckBox'/>
-              <div class="checkmark"></div>
+              <div class="checkmark" onClick={() => setService({...service, type: "Tractor"})}></div>
             </label>
             <label className='jb3'>Tractor</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine2" className='myCheckBox'/>
-              <div class="checkmark"></div>
+              <div class="checkmark" onClick={() => setService({...service, type: "Soil cultivator"})}></div>
             </label>
             <label className='jb3'>Soil cultivator</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine3" className='myCheckBox'/>
-              <div class="checkmark"></div>
+              <div class="checkmark" onClick={() => setService({...service, type: "Disc Plough"})}></div>
             </label>
             <label className='jb3'>Disc Plough</label>
             </div>
             <div className="jb2">
             <label class="conta">
               <input  type="checkbox" value = "Machine4" className='myCheckBox'/>
-              <div class="checkmark"></div>
+              <div class="checkmark" onClick={() => setService({...service, type: "Thresher"})}></div>
             </label>
             <label className='jb3'>Thresher</label>
             </div>

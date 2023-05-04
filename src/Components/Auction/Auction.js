@@ -191,7 +191,7 @@ function Auction(props) {
         <h1>Enter Code</h1>
         <form onSubmit={SubmitCode}>
     <input
-        type="number"
+        type="text"
         value={Code}
         onChange={(event) => setCode(event.target.value)}
       />

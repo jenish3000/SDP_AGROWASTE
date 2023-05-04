@@ -75,8 +75,14 @@ html{
 
 /* service button css */
 .service{
+}
+.service-container{
+  background-color: antiquewhite;
+  height: 7rem;
   display: flex;
   justify-content: center;
+  align-items: center;
+  
 }
   /* next text and image side by side content*/
   /* Data Container */

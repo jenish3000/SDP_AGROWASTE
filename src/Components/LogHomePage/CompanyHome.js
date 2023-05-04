@@ -10,9 +10,15 @@ import { useNavigate } from 'react-router-dom';
 // import Service from '../ServicePage/Service';
 import './Home.css'
 const Home = () => {
+    const navigate = useNavigate();
     const HandleResearch = () => {
-        const navigate = useNavigate();
+        
         navigate('/Research');
+        // setIsLoggedIn(false);
+    }
+    const handleAuction = () => {
+        
+        navigate('/Auction');
         // setIsLoggedIn(false);
     }
     return (
@@ -26,11 +32,11 @@ const Home = () => {
                         <img src="../images/agricultural-waste.jpg" className="Main-img" alt="" />
                     </div> */}
                     <div className="space"></div>
-                    <div className="service navbar-container">
+                    <div className="service-container ">
                             {/* <button className="button service button-name">
                                <a href="Service">service</a> </button> */}
-                               <button className="button service Auction button-name">
-                               <a href="Auction">Auction</a> </button>
+                               <button className="button service Auction button-name" onClick={handleAuction}>
+                              Auction </button>
                     </div>
                     {/* <div className="Auction navbar-container">
                             <button className="button service button-name">

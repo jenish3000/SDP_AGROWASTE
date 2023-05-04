@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './Navbar.css';
-import Home from '../HomePage/Home';
+// import Home from '../HomePage/Home';
 
-import OptionSignup from '../OptionPage/OptionSignup';
+// import OptionSignup from '../OptionPage/OptionSignup';
 import DeepContext from '../../context/DeepContext';
-import OptionLogin from '../OptionPage/OptionLogin';
+// import OptionLogin from '../OptionPage/OptionLogin';
 import { useNavigate } from 'react-router-dom';
 function Navbar() {
     const [user1, setUser1] = useState("");

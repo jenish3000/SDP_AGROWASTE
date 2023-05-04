@@ -6,7 +6,7 @@ import axios from 'axios';
 const ListContainer = () => {
 
   const { showAlert,user, EndObject,FullfillRequest } = useContext(DeepContext);
-  // console.log(EndObject);
+  // console.log(EndObject+"this is end object");
   const data = EndObject;
   // console.log("test print",user);
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ const ListContainer = () => {
     navigate('/AdminHome')
   }
   const handleRequest = () => {
-    // FullfillRequest(user);
+    FullfillRequest(data);
     navigate('/ClearReqForm');
   }
   //   const [service, setService] = useState();
