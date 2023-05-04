@@ -68,7 +68,7 @@ html{
     margin-top: 2rem;
   }
 
-  input[type="text"] {
+ .AuctionField{
     margin: 1rem;
     padding: 1.2rem;
     border-radius: 0.6rem;

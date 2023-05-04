@@ -47,9 +47,9 @@ const Reasearch = () => {
         
         setInput(inq);
 
-        const nbox=280*inq;
+        const nbox=120*inq;   //280
         setBox(nbox);
-        const residue=24*nbox;
+        const residue=10*nbox;  //24
         setResidue(residue);
         const nPrice=5*residue;
         setPrice(nPrice);

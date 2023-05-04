@@ -86,7 +86,7 @@ function Navbar() {
                             <a href="#about">About</a>
                         </span>
                         <span className="navbar-options-btn">
-                            <a href="#">Survey</a>
+                            <a href="#Research">Survey</a>
                         </span>
                         <span className="navbar-options-btn">
                             <a href="#contact">Contact</a>

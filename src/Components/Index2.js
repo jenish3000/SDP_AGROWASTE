@@ -1,31 +1,31 @@
 import React from 'react'
 import { BrowserRouter as Router,Route, Routes } from "react-router-dom";
+import Home from './HomePage/Home';
+import Navbar from './Navbar/Navbar';
+import Research from './homeComponent/ResearchPage/Research'
+import OptionSignup from './OptionPage/OptionSignup';
+import OptionLogin from './OptionPage/OptionLogin';
 import LoginFarmer from './LoginPage/LoginFarmer';
 import LoginCompany from './LoginPage/LoginCompany';
 import LoginAdmin from './LoginPage/LoginAdmin';
+import Forget from './LoginPage/Forget';
+import Profile from './ProfilePage/Profile';
 import SignUpFarmer from './SignupPage/SignUpFarmer';
 import SignUpCompany from './SignupPage/SignUpCompany';
 import SignUpAdmin from './SignupPage/SignUpAdmin';
-import CompanyHome from './LogHomePage/CompanyHome';
 import FarmerHome from './LogHomePage/FarmerHome';
+import CompanyHome from './LogHomePage/CompanyHome';
 import AdminHome from './LogHomePage/AdminHomePage/AdminHome';
-import CompleteRequest from './LogHomePage/AdminHomePage/FulfillRequestForm/CompleteRequest'
-import ClearReqForm from './LogHomePage/AdminHomePage/FulfillRequestForm/ClearReqForm'
+import Service from './ServicePage/Service';
 import Auction from './Auction/Auction';
 import ShowAuction from './LogHomePage/AdminHomePage/ShowAuctionDetails/ShowAuction'
 import AuctionList from './Auction/AuctionList';
-import Home from './HomePage/Home';
-import Forget from './LoginPage/Forget';
-import Service from './ServicePage/Service';
-import OptionSignup from './OptionPage/OptionSignup';
-import OptionLogin from './OptionPage/OptionLogin';
-import DeepState from '../context/DeepState';
-import Profile from './ProfilePage/Profile';
-import SuccessPage from './ServicePage/SuccessPage';
+import CompleteRequest from './LogHomePage/AdminHomePage/FulfillRequestForm/CompleteRequest'
+import ClearReqForm from './LogHomePage/AdminHomePage/FulfillRequestForm/ClearReqForm'
 import CreateRoom from './LogHomePage/AdminHomePage/Roomform';
+import SuccessPage from './ServicePage/SuccessPage';
 import Alert from './Alert';
-import Navbar from './Navbar/Navbar';
-import Research from './homeComponent/ResearchPage/Research'
+import DeepState from '../context/DeepState';
 const Index2 = () => {
   return (
     <>

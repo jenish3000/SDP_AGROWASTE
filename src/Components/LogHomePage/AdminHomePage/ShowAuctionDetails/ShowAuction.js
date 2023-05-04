@@ -70,6 +70,10 @@ const ListContainer = () => {
      
     </div>
     <div class="req1">
+      <div class="req-name1"><p>Starting Bid: {data.StartBid}</p></div>
+     
+    </div>
+    <div class="req1">
       <div class="req-name1"><p>Start Date: {data.startDate}</p></div>
       
     </div>

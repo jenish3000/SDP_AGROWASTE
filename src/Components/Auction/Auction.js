@@ -105,8 +105,8 @@ function Auction(props) {
     event.preventDefault();
     // setUser("qq");
   
-    console.log("hii i am msg",user);
-    console.log(Hig,amount);
+    // console.log("hii i am msg",user);
+    // console.log(Hig,amount);
     if(Hig < amount){ 
       setprice(amount);
       // console.log(user);
@@ -173,14 +173,14 @@ function Auction(props) {
         }
       })
       socket.on("curr_bid",(data)=>{
-        console.log(data,"mast chhe j chhe e");
+        // console.log(data,"mast chhe j chhe e");
         setHig(data.Bid);
         setCuser(data.User);
       })
       
     });
     setCDate(new Date());
-    console.log(user);
+    // console.log(user);
     
   }, [socket,Cuser,bids])
   
@@ -190,7 +190,7 @@ function Auction(props) {
     <div className="container mx-2">
         <h1>Enter Code</h1>
         <form onSubmit={SubmitCode}>
-    <input
+    <input className='AuctionField'
         type="text"
         value={Code}
         onChange={(event) => setCode(event.target.value)}

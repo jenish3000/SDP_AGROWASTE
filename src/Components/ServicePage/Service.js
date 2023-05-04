@@ -84,7 +84,7 @@ const Service = () => {
     // console.log(data.data);
     if (data.data.success) {
       showAlert(data.data.msg, 'success');
-      navigate('/')
+      navigate('/FarmerHome')
     } else {
       showAlert(data.data.msg, 'danger');
       // navigate('/');
