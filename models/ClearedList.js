@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const ClearedList = mongoose.Schema({
+    email:{
+        type:String,
+        required:true,
+    },
      tResidue:{
         type : String,
         required:true,

@@ -323,7 +323,7 @@ router.post("/LoginAdmin", async (req, res) => {
 router.post("/Service",async (req,res)=>{
     const { email, password } = req.body;
     try {
-        console.log("service req body",req.body);
+        // console.log("service req body",req.body); 
         // const user = await User.findOne({ email: req.body.email });
         const EmailExist = await service.findOne({ email: req.body.email });
         if (1) {
@@ -334,14 +334,14 @@ router.post("/Service",async (req,res)=>{
                     mobileno: req.body.mobileno,
                     acre: req.body.acre,
                     ptype: req.body.ptype,
-                    date: req.body.date,
+                    date1: req.body.date1,
                     du1: req.body.du1,
                     du2: req.body.du2,
                     type: req.body.type,
                     mtype: JSON.stringify(req.body.mtype),
                     // userType: req.body.type
                 });
-                console.log("Printed", newSer);
+                // console.log("Printed", newSer);
                 if (newSer) {
                     res.json({ success: true, msg: "successfully requested for harvesting." })
                 }
@@ -407,17 +407,25 @@ router.post('/ClearReqForm', async (req, res) => {
     try {
         console.log("service req body",req.body);
         // const user = await Admin.findOne({email:req.body.email });
-        
-        const ReqExist = await service.findOne({ email: req.body.email });
-        // console.log(user);
+        const Service=await service.findOne({email:req.body.email});
+        console.log(Service+"db service acceass");
+        const ReqExist = req.body.email;
+        console.log(ReqExist+"this is request email");
         // if(user){
         if (!ReqExist) return res.status(200).send("No such request exists!!!");
         else {
 
             const ClearList = await ClearedList.create({
+                email:req.body.email,
                 tResidue: req.body.tResidue,
         tgrain: req.body.tgrain,
         sdate: req.body.sdate
+
+                // userType: req.body.type
+            });
+             await Service.remove({
+                email: req.body.email,
+             
 
                 // userType: req.body.type
             });
