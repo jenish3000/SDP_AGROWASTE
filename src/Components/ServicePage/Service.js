@@ -187,28 +187,28 @@ const Service = () => {
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value = "Machine1" className='myCheckBox'/>
+              <input  type="checkbox" value = "Tractor" className='myCheckBox'/>
               <div class="checkmark" onClick={() => setService({...service, type: "Tractor"})}></div>
             </label>
             <label className='jb3'>Tractor</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value = "Machine2" className='myCheckBox'/>
+              <input  type="checkbox" value = "Soil cultivator" className='myCheckBox'/>
               <div class="checkmark" onClick={() => setService({...service, type: "Soil cultivator"})}></div>
             </label>
             <label className='jb3'>Soil cultivator</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value = "Machine3" className='myCheckBox'/>
+              <input  type="checkbox" value = "Disc Plough" className='myCheckBox'/>
               <div class="checkmark" onClick={() => setService({...service, type: "Disc Plough"})}></div>
             </label>
             <label className='jb3'>Disc Plough</label>
             </div>
             <div className="jb2">
             <label class="conta">
-              <input  type="checkbox" value = "Machine4" className='myCheckBox'/>
+              <input  type="checkbox" value = "Thresher " className='myCheckBox'/>
               <div class="checkmark" onClick={() => setService({...service, type: "Thresher"})}></div>
             </label>
             <label className='jb3'>Thresher</label>
